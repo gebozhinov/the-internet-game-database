@@ -29,7 +29,14 @@ public class Game extends BaseEntity {
     private String description;
     @Column
     private Integer rating;
-
+    @OneToMany(targetEntity = Review.class, mappedBy = "game")
+    private Set<Review> reviews;
+    @ManyToOne
+    @JoinColumn(name = "user_favorites")
+    private User userFavorites;
+    @ManyToOne
+    @JoinColumn(name = "user_rates")
+    private User userRates;
     public String getTitle() {
         return title;
     }
@@ -90,6 +97,33 @@ public class Game extends BaseEntity {
 
     public Game setRating(Integer rating) {
         this.rating = rating;
+        return this;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public Game setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+        return this;
+    }
+
+    public User getUserFavorites() {
+        return userFavorites;
+    }
+
+    public Game setUserFavorites(User userFavorites) {
+        this.userFavorites = userFavorites;
+        return this;
+    }
+
+    public User getUserRates() {
+        return userRates;
+    }
+
+    public Game setUserRates(User userRates) {
+        this.userRates = userRates;
         return this;
     }
 }
