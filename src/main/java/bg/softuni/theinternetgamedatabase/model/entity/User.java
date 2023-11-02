@@ -1,6 +1,5 @@
 package bg.softuni.theinternetgamedatabase.model.entity;
 
-import bg.softuni.theinternetgamedatabase.model.enums.UserRole;
 import jakarta.persistence.*;
 
 import java.util.Set;

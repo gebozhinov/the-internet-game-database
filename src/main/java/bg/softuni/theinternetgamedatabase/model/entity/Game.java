@@ -14,6 +14,9 @@ public class Game extends BaseEntity {
     private String title;
     @ManyToOne
     private Manufacture manufacture;
+    @ElementCollection(targetClass = GameGenre.class)
+    @CollectionTable(name = "game_genre")
+    @Column(name = "genre")
     @Enumerated(EnumType.STRING)
     private Set<GameGenre> genres;
     @ManyToMany
@@ -28,7 +31,7 @@ public class Game extends BaseEntity {
     @Column
     private String description;
     @Column
-    private Integer rating;
+    private Double rating;
     @OneToMany(targetEntity = Review.class, mappedBy = "game")
     private Set<Review> reviews;
     @ManyToOne
@@ -91,11 +94,11 @@ public class Game extends BaseEntity {
         return this;
     }
 
-    public Integer getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public Game setRating(Integer rating) {
+    public Game setRating(Double rating) {
         this.rating = rating;
         return this;
     }

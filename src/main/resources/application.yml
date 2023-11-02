@@ -14,13 +14,13 @@ spring:
         enabled: true
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
-  #  sql:
-  #    init:
-  #      mode: always
-  #      encoding: utf-8
+  sql:
+    init:
+      mode: always
+      encoding: utf-8
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     open-in-view: false
     properties:
       hibernate:

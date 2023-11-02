@@ -1,16 +1,14 @@
 package bg.softuni.theinternetgamedatabase.model.entity;
 
 import bg.softuni.theinternetgamedatabase.model.enums.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "roles")
 public class Role extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, unique = true)
     private UserRole userRole;
 
     public UserRole getUserRole() {

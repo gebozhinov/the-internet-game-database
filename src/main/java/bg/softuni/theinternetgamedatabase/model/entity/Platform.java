@@ -10,7 +10,7 @@ import java.util.Set;
 @Table(name = "platforms")
 public class Platform extends BaseEntity {
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String name;
     @Enumerated(EnumType.STRING)
     @Column(name = "platform_type")
