@@ -1,45 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login 01</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Mulish&display=swap"
-            rel="stylesheet"
-    >
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:insert="~{/fragments/head}" />
 <body>
 <div class="background"></div>
 <div class="centering">
-    <form class="my-form">
+    <form class="my-form"
+            th:method="post"
+          th:action="@{/login}"
+    >
         <div class="login-welcome-row">
             <img
                     class="login-welcome"
                     src="/images/logo.png"
                     alt="Login"
             >
-            <!-- optimize the image in production -->
             <h1>LogIn!</h1>
         </div>
         <div class="text-field">
-            <label for="email">Email:</label>
+            <label for="username">Username:</label>
             <input
-                    aria-label="Email"
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Your Email"
+                    aria-label="Username"
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Your Username"
                     required
             >
             <img
-                    alt="Email Icon"
-                    title="Email Icon"
-                    src="/images/email.svg"
-            >
+                    alt="User Icon"
+                    title="User Icon"
+                    src="/images/user.svg">
         </div>
         <div class="text-field">
             <label for="password">Password:</label>

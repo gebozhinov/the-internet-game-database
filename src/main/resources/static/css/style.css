@@ -27,13 +27,13 @@ h1 {
     width: 100vw;
     display: grid;
     place-items: center;
-    background-image: url(universe.jpg);
+    background-image: url(/images/background.png);
     /* https://www.freepik.com/free-vector/gradient
        -galaxy-background_14658088.htm optimize in prod*/
     opacity: 0.5;
     background-size: 100%;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
 
 }
 
