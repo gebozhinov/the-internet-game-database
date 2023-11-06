@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:insert="~{/fragments/head}" />
+<body>
+<div class="background"></div>
+<div class="centering">
+    <form class="my-form"
+            th:method="post"
+            th:action="@{/register}"
+    >
+        <div class="login-welcome-row">
+            <img
+                    class="login-welcome"
+                    src="/images/logo.png"
+                    alt="Create Account"
+            >
+            <h1>Create Account!</h1>
+        </div>
+        <div class="text-field">
+            <label for="username">Username:</label>
+            <input
+                    aria-label="Username"
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Your Username"
+                    required
+            >
+            <img
+                    alt="User Icon"
+                    title="User Icon"
+                    src="/images/user.svg">
+        </div>
+        <div class="text-field">
+            <label for="email">Email:</label>
+            <input
+                    aria-label="Email"
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+            >
+            <img
+                    alt="Email Icon"
+                    title="Email Icon"
+                    src="/images/email.svg">
+        </div>
+        <div class="text-field">
+            <label for="age">Age:</label>
+            <input
+                    aria-label="Age"
+                    type="text"
+                    id="age"
+                    name="age"
+                    placeholder="Your Age"
+                    required
+            >
+            <img
+                    alt="Age Icon"
+                    title="Age Icon"
+                    src="/images/id-card.svg">
+        </div>
+        <div class="text-field">
+            <label for="password">Password:</label>
+            <input
+                    id="password"
+                    type="password"
+                    aria-label="Password"
+                    name="password"
+                    placeholder="Your Password"
+                    title="Minimum 6 characters at least 1 Alphabet and 1 Number"
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                    required
+            ><img
+                    alt="Password Icon"
+                    title="Password Icon"
+                    src="/images/password.svg"
+            >
+        </div>
+        <div class="text-field">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input
+                    id="confirmPassword"
+                    type="password"
+                    aria-label="Confirm Password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    title="Minimum 6 characters at least 1 Alphabet and 1 Number"
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                    required
+            ><img
+                alt="Password Icon"
+                title="Password Icon"
+                src="/images/password.svg"
+        >
+        </div>
+        <input type="submit" class="my-form__button" value="Register" >
+        <div class="my-form__actions">
+            <div class="my-form__already_registered">
+                <span>Already registered?</span>
+            </div>
+            <div class="my-form__signup">
+                <a href="/login" title="Login">Login!</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/js/register.js"></script>
+</body>
+</html>
