@@ -2,7 +2,10 @@ let loginForm = document.querySelector(".my-form");
 
 fetch("http://localhost:8080/register", {
     method: "POST",
-    headers: {"Content-type": "application/json"},
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
     body: JSON.stringify({
         text: text
     })

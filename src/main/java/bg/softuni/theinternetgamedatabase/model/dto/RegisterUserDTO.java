@@ -1,9 +1,25 @@
 package bg.softuni.theinternetgamedatabase.model.dto;
 
+import bg.softuni.theinternetgamedatabase.model.validation.EqualPassword;
+import bg.softuni.theinternetgamedatabase.model.validation.UniqueData;
+import jakarta.validation.constraints.*;
+
+@EqualPassword
 public class RegisterUserDTO {
+
+    @NotBlank
+    @Size(min = 2, max = 20)
+    @UniqueData(fieldName = "username")
     private String username;
+    @NotBlank
+    @Email
+    @UniqueData(fieldName = "email")
     private String email;
+    @PositiveOrZero
+    @NotNull
     private Integer age;
+    @NotBlank
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")
     private String password;
     private String confirmPassword;
 
