@@ -8,7 +8,7 @@
     <form class="my-form"
             th:method="post"
             th:action="@{/register}"
-    >
+            th:object="${registerUserDTO}">
         <div class="login-welcome-row">
             <img
                     class="login-welcome"
@@ -20,6 +20,8 @@
         <div class="text-field">
             <label for="username">Username:</label>
             <input
+                    th:field="*{username}"
+                    th:errorclass="is-invalid"
                     aria-label="Username"
                     type="text"
                     id="username"
@@ -32,6 +34,7 @@
                     title="User Icon"
                     src="/images/user.svg">
         </div>
+        <small th:if="${#fields.hasErrors('username')}" class="incorrect-data text-danger" > Incorrect username!</small>
         <div class="text-field">
             <label for="email">Email:</label>
             <input
@@ -107,6 +110,6 @@
         </div>
     </form>
 </div>
-<script src="/js/register.js"></script>
+<!--<script src="/js/register.js"></script>-->
 </body>
 </html>

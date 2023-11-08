@@ -2,6 +2,7 @@ package bg.softuni.theinternetgamedatabase.model.dto;
 
 import bg.softuni.theinternetgamedatabase.model.validation.EqualPassword;
 import bg.softuni.theinternetgamedatabase.model.validation.UniqueData;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 
 @EqualPassword
