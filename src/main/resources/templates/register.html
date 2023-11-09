@@ -34,10 +34,15 @@
                     title="User Icon"
                     src="/images/user.svg">
         </div>
-        <small th:if="${#fields.hasErrors('username')}" class="incorrect-data text-danger" > Incorrect username!</small>
+        <small class="incorrect-data text-danger border-danger"
+                th:each="err : ${#fields.errors('username')}"
+                th:text="${err}"
+        ></small>
         <div class="text-field">
             <label for="email">Email:</label>
             <input
+                    th:field="*{email}"
+                    th:errorclass="is-invalid"
                     aria-label="Email"
                     type="text"
                     id="email"
@@ -50,9 +55,15 @@
                     title="Email Icon"
                     src="/images/email.svg">
         </div>
+        <small class="incorrect-data text-danger border-danger"
+               th:each="err : ${#fields.errors('email')}"
+               th:text="${err}"
+        ></small>
         <div class="text-field">
             <label for="age">Age:</label>
             <input
+                    th:field="*{age}"
+                    th:errorclass="is-invalid"
                     aria-label="Age"
                     type="text"
                     id="age"
@@ -65,9 +76,14 @@
                     title="Age Icon"
                     src="/images/id-card.svg">
         </div>
+        <small class="incorrect-data text-danger border-danger"
+               th:each="err : ${#fields.errors('age')}"
+               th:text="${err}"
+        ></small>
         <div class="text-field">
             <label for="password">Password:</label>
             <input
+                    th:errorclass="is-invalid"
                     id="password"
                     type="password"
                     aria-label="Password"
@@ -82,6 +98,10 @@
                     src="/images/password.svg"
             >
         </div>
+        <small class="incorrect-data text-danger border-danger"
+               th:each="err : ${#fields.errors('password')}"
+               th:text="${err}"
+        ></small>
         <div class="text-field">
             <label for="confirmPassword">Confirm Password:</label>
             <input
@@ -99,6 +119,7 @@
                 src="/images/password.svg"
         >
         </div>
+        <small th:if="${#fields.hasGlobalErrors()}" class="text-danger border-danger">Passwords do not match!</small>
         <input type="submit" class="my-form__button" value="Register" >
         <div class="my-form__actions">
             <div class="my-form__already_registered">

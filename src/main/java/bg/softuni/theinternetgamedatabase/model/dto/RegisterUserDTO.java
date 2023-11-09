@@ -2,25 +2,25 @@ package bg.softuni.theinternetgamedatabase.model.dto;
 
 import bg.softuni.theinternetgamedatabase.model.validation.EqualPassword;
 import bg.softuni.theinternetgamedatabase.model.validation.UniqueData;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 
 @EqualPassword
 public class RegisterUserDTO {
 
-    @NotBlank
-    @Size(min = 2, max = 20)
-    @UniqueData(fieldName = "username")
+    @NotBlank(message = "Username cannot be empty!")
+    @Size(min = 2, max = 20, message = "Username length must be between 2 and 20 characters!")
+    @UniqueData(fieldName = "username", message = "This username is already taken!")
     private String username;
-    @NotBlank
-    @Email
-    @UniqueData(fieldName = "email")
+    @NotBlank(message = "Email cannot be empty!")
+    @Email(message = "Email address must be valid!")
+    @UniqueData(fieldName = "email", message = "This email address is already taken!")
     private String email;
-    @PositiveOrZero
-    @NotNull
+    @PositiveOrZero(message = "Age cannot be negative number!")
+    @NotNull(message = "Age cannot be empty!")
     private Integer age;
-    @NotBlank
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")
+    @NotBlank(message = "Password cannot be empty!")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$", message = "Password must be minimum 6 characters " +
+            "at least 1 Alphabet and 1 Number!")
     private String password;
     private String confirmPassword;
 
