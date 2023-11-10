@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.service;
 
+import bg.softuni.theinternetgamedatabase.model.dto.RegisterUserDTO;
 import bg.softuni.theinternetgamedatabase.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,4 +15,7 @@ public class UserService {
     }
 
 
+    public void register(RegisterUserDTO registerUserDTO) {
+
+    }
 }
