@@ -8,8 +8,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "games")
-public class Game extends BaseEntity {
+public class Game {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false, unique = true)
     private String title;
     @ManyToOne
@@ -128,5 +131,9 @@ public class Game extends BaseEntity {
     public Game setUserRates(User userRates) {
         this.userRates = userRates;
         return this;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

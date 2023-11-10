@@ -1,16 +1,16 @@
 package bg.softuni.theinternetgamedatabase.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "manufactures")
-public class Manufacture extends BaseEntity {
+public class Manufacture {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "company_name", unique = true, nullable = false)
     private String companyName;
     @OneToMany(targetEntity = Game.class, mappedBy = "manufacture")
@@ -32,5 +32,9 @@ public class Manufacture extends BaseEntity {
     public Manufacture setGames(Set<Game> games) {
         this.games = games;
         return this;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

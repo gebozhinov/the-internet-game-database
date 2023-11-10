@@ -8,8 +8,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "platforms")
-public class Platform extends BaseEntity {
+public class Platform {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false, unique = true)
     private String name;
     @Enumerated(EnumType.STRING)
@@ -57,5 +60,9 @@ public class Platform extends BaseEntity {
     public Platform setGames(Set<Game> games) {
         this.games = games;
         return this;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

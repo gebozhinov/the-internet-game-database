@@ -1,16 +1,16 @@
 package bg.softuni.theinternetgamedatabase.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "reviews")
-public class Review extends BaseEntity {
+public class Review {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false)
     private String review;
     @Column
@@ -54,5 +54,9 @@ public class Review extends BaseEntity {
     public Review setGame(Game game) {
         this.game = game;
         return this;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
