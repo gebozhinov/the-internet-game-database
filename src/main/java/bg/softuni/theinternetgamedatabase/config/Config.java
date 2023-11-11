@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.context.SecurityContextRepository;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class Config {
@@ -22,13 +22,24 @@ public class Config {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
 
-     httpSecurity.authorizeHttpRequests((authorize) -> authorize
-             // everyone can download static resources (css, js, images)
-             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-             // everyone can log in and register
-             .requestMatchers("/", "/login", "/register").permitAll());
+   return  httpSecurity.authorizeHttpRequests(authorize -> authorize
+                        // everyone can download static resources (css, js, images)
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/login", "/register").anonymous()
+                        .anyRequest().authenticated())
+                .formLogin(login ->  login
+                        .loginPage("/login")
+                        .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                        .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+                        .defaultSuccessUrl("/")
+                        .failureForwardUrl("/login"))
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .deleteCookies("JSESSIONID")
+                        .clearAuthentication(true))
+                .build();
 
-
-     return httpSecurity.build();
     }
 }

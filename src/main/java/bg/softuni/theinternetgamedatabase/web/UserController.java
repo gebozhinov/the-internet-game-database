@@ -1,6 +1,5 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.dto.LoginUserDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.RegisterUserDTO;
 import bg.softuni.theinternetgamedatabase.service.UserService;
 import jakarta.validation.Valid;
@@ -32,14 +31,6 @@ public class UserController {
     @GetMapping("/register")
     public String register() {
         return "register";
-    }
-
-
-    @PostMapping( "/login")
-    public String login(LoginUserDTO loginUserDTO) {
-
-        return "redirect:/login";
-
     }
 
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)

@@ -1,7 +1,6 @@
 package bg.softuni.theinternetgamedatabase.service;
 
 import bg.softuni.theinternetgamedatabase.model.dto.RegisterUserDTO;
-import bg.softuni.theinternetgamedatabase.model.entity.Role;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import bg.softuni.theinternetgamedatabase.model.mapper.UserMapper;
 import bg.softuni.theinternetgamedatabase.repository.RoleRepository;
@@ -9,7 +8,6 @@ import bg.softuni.theinternetgamedatabase.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Service

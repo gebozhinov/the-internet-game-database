@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+This is a home page!
+
+<nav class="main-nav">
+    <ul>
+        <li>
+            <a href="/profile">Profile</a>
+        </li>
+        <li sec:authorize="hasAuthority('ADMIN')">
+            <a href="/admin">Admin</a>
+        </li>
+        <li>
+            <form
+                    th:action="@{/logout}"
+                    th:method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>
