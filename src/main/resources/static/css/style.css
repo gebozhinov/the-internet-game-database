@@ -28,10 +28,7 @@ h1 {
     display: grid;
     place-items: center;
     background-image: url(/images/background.png);
-    /* https://www.freepik.com/free-vector/gradient
-       -galaxy-background_14658088.htm optimize in prod*/
-    opacity: 0.5;
-    background-size: 100%;
+    opacity: 1;
     background-repeat: no-repeat;
     background-size: cover;
 
