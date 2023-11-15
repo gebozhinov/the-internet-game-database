@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>IGDB</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -14,32 +15,79 @@
             rel="stylesheet"
     >
 </head>
+<body>
 <th:block th:insert="~{/fragments/header}"/>
-<div class="home">
 
-
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src='/images/assets/forest.jpg'>
-                <h2>Forest</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src='/images/assets/forest.jpg'>
+                    <h2>Forest</h2>
+                </div>
+                <div class="swiper-slide">
+                    <img src='/images/assets/lavender-field.jpg'>
+                    <h2>Lavender Field</h2>
+                </div>
+                <div class="swiper-slide">
+                    <img src='/images/assets/wooden-bridge.jpg'>
+                    <h2>Wooden Bridge</h2>
+                </div>
+                <div class="swiper-slide">
+                    <img src='/images/assets/snow-scenery.jpg'>
+                    <h2>Mountains</h2>
+                </div>
             </div>
-            <div class="swiper-slide">
-                <img src='/images/assets/lavender-field.jpg'>
-                <h2>Lavender Field</h2>
-            </div>
-            <div class="swiper-slide">
-                <img src='/images/assets/wooden-bridge.jpg'>
-                <h2>Wooden Bridge</h2>
-            </div>
-            <div class="swiper-slide">
-                <img src='/images/assets/snow-scenery.jpg'>
-                <h2>Mountains</h2>
-            </div>
+            <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
-    </div>
-</div>
+<section class=" carousel">
+    <ol class="carousel__viewport">
+        <li class="carousel__slide">
+            <div
+                    class="carousel__snapper"
+                    style="background-image: url('/images/assets/1.jpg')"
+            ></div>
+        </li>
+        <li class="carousel__slide">
+            <div
+                    class="carousel__snapper"
+                    style="background-image: url('/images/assets/1.jpg')"
+            ></div>
+        </li>
+        <li class="carousel__slide">
+            <div
+                    class="carousel__snapper"
+                    style="background-image: url('/images/assets/1.jpg')"
+            ></div>
+        </li>
+        <li class="carousel__slide">
+            <div
+                    class="carousel__snapper"
+                    style="background-image: url('/images/assets/1.jpg')"
+            ></div>
+        </li>
+        <li class="carousel__slide">
+            <div
+                    class="carousel__snapper"
+                    style="background-image: url('/images/assets/1.jpg')"
+            ></div>
+        </li>
+        <li class="carousel__slide">
+            <div
+                    class="carousel__snapper"
+                    style="background-image: url('/images/assets/1.jpg')"
+            ></div>
+        </li>
+        <li class="carousel__slide">
+            <div
+                    class="carousel__snapper"
+                    style="background-image: url('/images/assets/1.jpg')"
+            ></div>
+        </li>
+    </ol>
+</section>
+
+
+</body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/swiper.js"></script>
 </html>
