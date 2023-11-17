@@ -1,8 +1,8 @@
 const progressCircle = document.querySelector(".autoplay-progress svg");
 const progressContent = document.querySelector(".autoplay-progress span");
-const swiper = new Swiper(".mySwiper", {
+const topSwiper = new Swiper(".topSwiper", {
     spaceBetween: 30,
-    loop: true,
+    // loop: true,
     centeredSlides: true,
     autoplay: {
         delay: 2500,
@@ -22,4 +22,16 @@ const swiper = new Swiper(".mySwiper", {
             progressContent.textContent = `${Math.ceil(time / 1000)}s`;
         }
     }
+});
+
+const bottomSwiper = new Swiper(".bottomSwiper", {
+    slidesPerView: 4,
+    centeredSlides: true,
+    spaceBetween: 30,
+    height: 1,
+    grabCursor: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
 });

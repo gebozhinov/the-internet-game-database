@@ -306,9 +306,8 @@ a {
 
 }
 .home-index {
-    background-image: url(/images/background.png);
     opacity: 1;
-    background-repeat: no-repeat;
+    background: #171B20 no-repeat;
     background-size: cover;
 
 }
@@ -451,11 +450,10 @@ body {
     position: relative;
 }
 
-.swiper {
+.mainSwiper {
     width: 100%;
-    height: 100%
+    height: 80%
 }
-
 .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -471,9 +469,13 @@ body {
     color: white;
     z-index: 10;
     left: 50%;
-    top: calc(50% - 36px);
+    top: calc(50%);
     font-size: 42px;
     transform: translate(-50%, -50%);
+}
+
+.text-under {
+    cursor: pointer;
 }
 
 .swiper-slide img {
@@ -496,11 +498,16 @@ body {
 .swiper-pagination-bullet-active {
     opacity: 1;
 }
-
+.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 200px;
+}
+.swiper-button-next, .swiper-button-prev {
+    top: 40%;
+}
 .autoplay-progress {
     position: absolute;
     right: 16px;
-    bottom: 16px;
+    bottom: 200px;
     z-index: 10;
     width: 48px;
     height: 48px;
@@ -525,4 +532,9 @@ body {
     stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
     stroke-dasharray: 125.6;
     transform: rotate(-90deg);
+}
+
+.swiper {
+    width: 100%;
+    height: 35%
 }
