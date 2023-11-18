@@ -32,7 +32,7 @@
             <img
                     alt="User Icon"
                     title="User Icon"
-                    src="/images/user.svg">
+                    src="/images/loginregister/user.svg">
         </div>
         <small class="incorrect-data text-danger border-danger"
                 th:each="err : ${#fields.errors('username')}"
@@ -53,7 +53,7 @@
             <img
                     alt="Email Icon"
                     title="Email Icon"
-                    src="/images/email.svg">
+                    src="/images/loginregister/email.svg">
         </div>
         <small class="incorrect-data text-danger border-danger"
                th:each="err : ${#fields.errors('email')}"
@@ -74,7 +74,7 @@
             <img
                     alt="Age Icon"
                     title="Age Icon"
-                    src="/images/id-card.svg">
+                    src="/images/loginregister/id-card.svg">
         </div>
         <small class="incorrect-data text-danger border-danger"
                th:each="err : ${#fields.errors('age')}"
@@ -95,7 +95,7 @@
             ><img
                     alt="Password Icon"
                     title="Password Icon"
-                    src="/images/password.svg"
+                    src="/images/loginregister/password.svg"
             >
         </div>
         <small class="incorrect-data text-danger border-danger"
@@ -116,7 +116,7 @@
             ><img
                 alt="Password Icon"
                 title="Password Icon"
-                src="/images/password.svg"
+                src="/images/loginregister/password.svg"
         >
         </div>
         <small th:if="${#fields.hasGlobalErrors()}" class="text-danger border-danger">Passwords do not match!</small>

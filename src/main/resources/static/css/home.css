@@ -307,7 +307,7 @@ a {
 }
 .home-index {
     opacity: 1;
-    background: #171B20 no-repeat;
+    background: #121a29;
     background-size: cover;
 
 }
@@ -458,7 +458,7 @@ body {
     text-align: center;
     font-size: 18px;
     background: #fff;
-    position: relative;
+    /*position: relative;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -474,7 +474,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.text-under {
+.text-cursor {
     cursor: pointer;
 }
 

@@ -25,13 +25,10 @@ const topSwiper = new Swiper(".topSwiper", {
 });
 
 const bottomSwiper = new Swiper(".bottomSwiper", {
-    slidesPerView: 4,
-    centeredSlides: true,
+    slidesPerView: 3,
     spaceBetween: 30,
-    height: 1,
     grabCursor: true,
     pagination: {
-        el: ".swiper-pagination",
         clickable: true,
     },
 });
