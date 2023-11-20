@@ -291,6 +291,29 @@ button {
 a {
     all: unset;
 }
+div > h3 {
+    font-family:"Poppins", sans-serif;
+    position:relative;
+    margin-bottom:20px;
+    text-transform:uppercase;
+    color: white;
+    left: 5%;
+
+}
+
+.underline:before {
+    position:absolute;
+    bottom:0;
+    left:0;
+    content:"";
+    height:4px;
+    width:210px;
+    background-color:#58A6FF;
+}
+.underline > a {
+    cursor: pointer;
+}
+
 
 .home {
     content: "";
@@ -458,7 +481,6 @@ body {
     text-align: center;
     font-size: 18px;
     background: #fff;
-    /*position: relative;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -472,6 +494,10 @@ body {
     top: calc(50%);
     font-size: 42px;
     transform: translate(-50%, -50%);
+}
+
+.swiper-slide h2 a {
+    cursor: pointer;
 }
 
 .text-cursor {
@@ -535,6 +561,7 @@ body {
 }
 
 .swiper {
-    width: 100%;
+    width: 90%;
     height: 35%
 }
+
