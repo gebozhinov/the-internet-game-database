@@ -19,10 +19,11 @@ public class User   {
     private String password;
     @Column(nullable = false)
     private Integer age;
-    @OneToMany(targetEntity = Game.class, mappedBy = "userFavorites")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_favorite_games",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Set<Game> favoriteGames;
-    @OneToMany(targetEntity = Game.class, mappedBy = "userRates")
-    private Set<Game> ratedGames;
     @OneToMany(targetEntity = Review.class, mappedBy = "author")
     private Set<Review> reviews;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -82,15 +83,6 @@ public class User   {
 
     public User setRoles(Set<Role> roles) {
         this.roles = roles;
-        return this;
-    }
-
-    public Set<Game> getRatedGames() {
-        return ratedGames;
-    }
-
-    public User setRatedGames(Set<Game> ratedGames) {
-        this.ratedGames = ratedGames;
         return this;
     }
 

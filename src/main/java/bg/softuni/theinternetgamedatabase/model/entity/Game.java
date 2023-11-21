@@ -15,6 +15,8 @@ public class Game {
     private Long id;
     @Column(nullable = false, unique = true)
     private String title;
+    @Column(name = "img_url",nullable = false ,unique = true)
+    private String imgUrl;
     @ManyToOne
     private Manufacture manufacture;
     @ElementCollection(targetClass = GameGenre.class)
@@ -37,12 +39,8 @@ public class Game {
     private Double rating;
     @OneToMany(targetEntity = Review.class, mappedBy = "game")
     private Set<Review> reviews;
-    @ManyToOne
-    @JoinColumn(name = "user_favorites")
-    private User userFavorites;
-    @ManyToOne
-    @JoinColumn(name = "user_rates")
-    private User userRates;
+    @ManyToMany(targetEntity = User.class, mappedBy = "favoriteGames")
+    private Set<User> userFavorites;
     public String getTitle() {
         return title;
     }
@@ -115,25 +113,25 @@ public class Game {
         return this;
     }
 
-    public User getUserFavorites() {
+    public Long getId() {
+        return id;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public Game setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+        return this;
+    }
+
+    public Set<User> getUserFavorites() {
         return userFavorites;
     }
 
-    public Game setUserFavorites(User userFavorites) {
+    public Game setUserFavorites(Set<User> userFavorites) {
         this.userFavorites = userFavorites;
         return this;
-    }
-
-    public User getUserRates() {
-        return userRates;
-    }
-
-    public Game setUserRates(User userRates) {
-        this.userRates = userRates;
-        return this;
-    }
-
-    public Long getId() {
-        return id;
     }
 }
