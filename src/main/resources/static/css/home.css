@@ -451,6 +451,8 @@ div > h3 {
 .item-title h3 {
     font-size: 14px;
     font-weight: 600;
+    color: black;
+    text-transform: none;
 }
 
 .item-title p {
