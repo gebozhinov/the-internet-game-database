@@ -389,6 +389,23 @@ div > h3 {
     ease-in-out;
 }
 
+nav > div > a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    align-items: center;
+    font-size: 14px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    background: none;
+    display: flex;
+    padding: 3px 0;
+    position: relative;
+    transition: all 0.2s
+    ease-in-out;
+}
+
 .navigation > li > button:hover,
 .navigation > li > a:hover {
     opacity: 0.75;
