@@ -23,6 +23,7 @@ public class HomeController {
     public String home(Principal principal, Model model) {
         Long userId = this.userService.findById(principal.getName());
         List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(userId);
+        model.addAttribute("favoriteGames", favoriteGames);
 
         return "index";
     }
