@@ -25,7 +25,7 @@ public class Config {
    return  httpSecurity.authorizeHttpRequests(authorize -> authorize
                         // everyone can download static resources (css, js, images)
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/").authenticated()
                         .requestMatchers("/login", "/register").anonymous()
                         .anyRequest().authenticated())
                 .formLogin(login ->  login

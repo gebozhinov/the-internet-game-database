@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.service;
 
+import bg.softuni.theinternetgamedatabase.model.dto.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.dto.RegisterUserDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import bg.softuni.theinternetgamedatabase.model.mapper.UserMapper;
@@ -8,6 +9,8 @@ import bg.softuni.theinternetgamedatabase.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -36,5 +39,13 @@ public class UserService {
                 .setRoles(Set.of(this.roleRepository.findById(1L).get()));
 
         this.userRepository.save(user);
+    }
+
+    public List<FavoriteGamesView> getFavoriteGames(Long id) {
+        return this.userRepository.getFavoriteGames(id).orElse(new ArrayList<>());
+    }
+
+    public Long findById(String username) {
+      return this.userRepository.findByUsername(username).get().getId();
     }
 }
