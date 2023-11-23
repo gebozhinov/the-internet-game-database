@@ -33,7 +33,7 @@ public class Game {
     private Set<Platform> platform;
     @Column(name = "release_date")
     private LocalDate releaseDate;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
     @Column
     private Double rating;
