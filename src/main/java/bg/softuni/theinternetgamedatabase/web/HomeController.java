@@ -2,7 +2,6 @@ package bg.softuni.theinternetgamedatabase.web;
 
 import bg.softuni.theinternetgamedatabase.model.dto.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.service.UserService;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

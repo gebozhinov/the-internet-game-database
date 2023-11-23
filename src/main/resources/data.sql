@@ -4,8 +4,8 @@ VALUES ('USER'),
        ('ADMIN')
 ON CONFLICT (user_role) DO NOTHING;
 
-INSERT INTO users(id, age, email, password, username)
-VALUES (1, 33, 'admin@admin.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'admin')
+INSERT INTO users(age, email, password, username)
+VALUES (33, 'admin@admin.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'admin')
 ON CONFLICT (username) DO NOTHING;
 
 INSERT INTO users_roles(user_id, role_id)

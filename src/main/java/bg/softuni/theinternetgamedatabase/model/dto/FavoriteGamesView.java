@@ -6,5 +6,5 @@ public interface FavoriteGamesView {
     Long getId();
     String getTitle();
     String getImg_Url();
-    String getDescription();
+
 }

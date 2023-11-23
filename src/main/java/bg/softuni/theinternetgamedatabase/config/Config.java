@@ -25,7 +25,6 @@ public class Config {
    return  httpSecurity.authorizeHttpRequests(authorize -> authorize
                         // everyone can download static resources (css, js, images)
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/").authenticated()
                         .requestMatchers("/login", "/register").anonymous()
                         .anyRequest().authenticated())
                 .formLogin(login ->  login
@@ -33,7 +32,7 @@ public class Config {
                         .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                         .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                         .defaultSuccessUrl("/")
-                        .failureForwardUrl("/login"))
+                        .failureUrl("/login"))
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login")
