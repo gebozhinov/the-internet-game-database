@@ -58,21 +58,17 @@
     </div>
 </div>
 </th:block>
-<div><h3 class="underline"><a href="/">Top Rated</a></h3 ></div>
 
-<div class="swiper bottomSwiper">
+<th:block sec:authorize="isAuthenticated()" th:if="${topRatedGames.size() > 0}" >
+<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/">Top Rated</a></h3 ></div>
+
+<div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src='/images/assets/wooden-bridge.jpg'><h2 class="text-cursor"><a href="/"> Slide 1</a></h2></div>
-        <div class="swiper-slide"><img src='/images/assets/forest.jpg'><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><img src='/images/assets/lavender-field.jpg'><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><img src='/images/assets/snow-scenery.jpg'><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
+        <div class="swiper-slide" th:each="game : ${topRatedGames}">
+            <img th:src="${game.getImg_Url()}"><h2 class="text-cursor"><a href="/" th:text="${game.getTitle()}"></a></h2></div>
     </div>
 </div>
+</th:block>
 
 <div><h3 class="underline"><a href="/">Coming Soon</a></h3 ></div>
 
