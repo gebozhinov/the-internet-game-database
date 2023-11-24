@@ -1,7 +1,8 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.dto.FavoriteGamesView;
-import bg.softuni.theinternetgamedatabase.model.dto.TopRatedGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
 import bg.softuni.theinternetgamedatabase.service.GameService;
 import bg.softuni.theinternetgamedatabase.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class HomeController {
 
         List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames(userId);
         model.addAttribute("topRatedGames", topRatedGames);
+
+        List<UpcomingGamesView> upcomingGames = this.gameService.getUpcomingGames();
+        model.addAttribute("upcomingGames", upcomingGames);
 
         return "index";
     }

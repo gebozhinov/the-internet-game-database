@@ -64,28 +64,22 @@
 
 <div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" th:each="game : ${topRatedGames}">
+        <div class="swiper-slide" th:each="game : ${topRatedGames}" th:object="${topRatedGames}">
             <img th:src="${game.getImg_Url()}"><h2 class="text-cursor"><a href="/" th:text="${game.getTitle()}"></a></h2></div>
     </div>
 </div>
 </th:block>
 
-<div><h3 class="underline"><a href="/">Coming Soon</a></h3 ></div>
+<th:block sec:authorize="isAuthenticated()" th:if="${upcomingGames.size() > 0}">
+<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/">Coming Soon</a></h3 ></div>
 
-<div class="swiper bottomSwiper">
+<div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src='/images/assets/wooden-bridge.jpg'><h2 class="text-cursor"><a href="/"> Slide 1</a></h2></div>
-        <div class="swiper-slide"><img src='/images/assets/forest.jpg'><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><img src='/images/assets/lavender-field.jpg'><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><img src='/images/assets/snow-scenery.jpg'><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
-        <div class="swiper-slide"><h2>Slide 1</h2></div>
+        <div class="swiper-slide" th:each="game : ${upcomingGames}" th:object="${upcomingGames}">
+            <img th:src="${game.getImg_Url()}"><h2 class="text-cursor"><a href="/" th:text="${game.getTitle()}"></a></h2></div>
     </div>
 </div>
-
+</th:block>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/swiper.js"></script>

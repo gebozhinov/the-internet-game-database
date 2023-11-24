@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.service;
 
-import bg.softuni.theinternetgamedatabase.model.dto.FavoriteGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.dto.RegisterUserDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import bg.softuni.theinternetgamedatabase.model.mapper.UserMapper;

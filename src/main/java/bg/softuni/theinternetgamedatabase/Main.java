@@ -1,7 +1,6 @@
 package bg.softuni.theinternetgamedatabase;
 
-import bg.softuni.theinternetgamedatabase.model.dto.FavoriteGamesView;
-import bg.softuni.theinternetgamedatabase.model.entity.Game;
+import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import bg.softuni.theinternetgamedatabase.repository.UserRepository;
 import jakarta.transaction.Transactional;

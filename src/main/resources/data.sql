@@ -34,7 +34,22 @@ SELECT 4, 'Ubisoft Bordeaux'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 4)
 UNION ALL
 SELECT 5, 'CD Projekt RED'
-WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 5);
+WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 5)
+UNION ALL
+SELECT 6, 'GSC Game World'
+WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 6)
+UNION ALL
+SELECT 7, 'Rocksteady Studios'
+WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 7)
+UNION ALL
+SELECT 8, 'Massive Entertainment'
+WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 8)
+UNION ALL
+SELECT 9, 'Square Enix'
+WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 9)
+UNION ALL
+SELECT 10, 'Bandai Namco Studios'
+WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 9);
 
 
 INSERT INTO games(id, rating, release_date, manufacture_id, description, title, img_url)
@@ -69,6 +84,40 @@ SELECT 5, 9.0, TO_DATE('2023-09-26', 'YYYY-MM-DD'), 5, 'Phantom Liberty is a spy
                                                        'unraveling a story that connects the highest echelons of power with the brutal world of black-market mercenaries.',
     'Cyberpunk 2077: Phantom Liberty', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700760616/igdb/kykutv0pdu2xmjqglkam.jpg'
 WHERE NOT EXISTS(SELECT id FROM games WHERE id = 5);
+
+INSERT INTO games(id, release_date, manufacture_id, description, title, img_url)
+SELECT 6, TO_DATE('2024-01-01', 'YYYY-MM-DD'), 6, 'S.T.A.L.K.E.R 2 is a unique blend of FPS, immersive sim and horror with a really thick atmosphere. ' ||
+                                                  'One of the biggest open-worlds to date is yours to explore — along with an epic branching story with multiple endings. ' ||
+                                                  'S.T.A.L.K.E.R. stands for (Scavengers, Trespassers, Adventurers, Loners, Killers, Explorers and Robbers).',
+    'S.T.A.L.K.E.R. 2: Heart of Chornobyl', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700848778/igdb/zofkiixmcblkgyafw3wz.jpg'
+WHERE NOT EXISTS(SELECT id FROM games WHERE id = 6)
+UNION ALL
+SELECT 7, TO_DATE('2024-02-02', 'YYYY-MM-DD'), 7, 'The creators of the Batman: Arkham series are back with a brand new action-adventure shooter.' ||
+                                                  ' The most dangerous villains in the DC Universe have been forced to team up and take on a new mission: ' ||
+                                                  'Kill the Justice League. Create Chaos in Metropolis. You are the Suicide Squad.',
+    'Suicide Squad: Kill the Justice League', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700848778/igdb/sewpt8vb6qxm49lbmgda.png'
+WHERE NOT EXISTS(SELECT id FROM games WHERE id = 7)
+UNION ALL
+SELECT 8, TO_DATE('2024-03-01', 'YYYY-MM-DD'), 8, 'Experience the first-ever open world Star Wars game,' ||
+                                                  ' set between the events of The Empire Strikes Back and Return of the Jedi.' ||
+                                                  ' Explore distinct planets across the galaxy, both iconic and new.' ||
+                                                  ' Risk it all as Kay Vess, an emerging scoundrel seeking freedom and the means to start a new life, ' ||
+                                                  'along with her companion Nix. Fight, steal, and outwit your way through the galaxy’s crime syndicates as you join the galaxy’s most wanted.',
+    'Star Wars: Outlaws', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700848778/igdb/mmyjbtqfshdrvnxudydx.png'
+WHERE NOT EXISTS(SELECT id FROM games WHERE id = 8)
+UNION ALL
+SELECT 9, TO_DATE('2024-02-29','YYYY-MM-DD'), 9, 'Final Fantasy VII Rebirth is the new story in the Final Fantasy VII remake project, ' ||
+                                                 'a reimagining of the iconic original game into three standalone titles by its original creators. ' ||
+                                                 'In this game, players will enjoy various new elements as the story unfolds,' ||
+                                                 ' culminating in the midpoint from the original Final Fantasy VII.',
+    'Final Fantasy VII Rebirth', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700848778/igdb/tyuqhe9gyvnlfhfaynbe.jpg'
+WHERE NOT EXISTS(SELECT id FROM games WHERE id = 9)
+UNION ALL
+SELECT 10, TO_DATE('2024-01-25', 'YYYY-MM-DD'), 10, 'The Tekken series is breaking into a new era! ' ||
+                                                    'The longest-running story in a video game franchise is coming back' ||
+                                                    ' with state-of-the-art graphics and powerful new rivalries. Stay tuned for Tekken 8!',
+    'Tekken 8', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700848779/igdb/vvertuzfjtw7afgysz38.png'
+WHERE NOT EXISTS(SELECT id FROM games WHERE id = 10);
 
 
 INSERT INTO users_favorite_games(user_id, game_id)
@@ -114,7 +163,34 @@ SELECT 5, 'RPG'
 WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 5)
 UNION ALL
 SELECT 5, 'SHOOTER'
-WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 5);
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 5)
+UNION ALL
+SELECT 6, 'ADVENTURE'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 6)
+UNION ALL
+SELECT 6, 'RPG'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 6)
+UNION ALL
+SELECT 6, 'SHOOTER'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 6)
+UNION ALL
+SELECT 7, 'ADVENTURE'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 7)
+UNION ALL
+SELECT 7, 'SHOOTER'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 7)
+UNION ALL
+SELECT 8, 'ADVENTURE'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 8)
+UNION ALL
+SELECT 9, 'ADVENTURE'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 9)
+UNION ALL
+SELECT 9, 'RPG'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 9)
+UNION ALL
+SELECT 10, 'FIGHTING'
+WHERE NOT EXISTS (SELECT game_id FROM game_genre WHERE game_id = 10);
 
 
 INSERT INTO platforms(id, name, platform_family, platform_type)
@@ -166,7 +242,43 @@ SELECT 5, 2
 WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 5)
 UNION ALL
 SELECT 5, 5
-WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 5);
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 5)
+UNION ALL
+SELECT 6, 1
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 6)
+UNION ALL
+SELECT 6, 5
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 6)
+UNION ALL
+SELECT 7, 1
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 7)
+UNION ALL
+SELECT 7, 2
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 7)
+UNION ALL
+SELECT 7, 5
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 7)
+UNION ALL
+SELECT 8, 1
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 8)
+UNION ALL
+SELECT 8, 2
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 8)
+UNION ALL
+SELECT 8, 5
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 8)
+UNION ALL
+SELECT 9, 2
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 9)
+UNION ALL
+SELECT 10, 1
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 10)
+UNION ALL
+SELECT 10, 2
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 10)
+UNION ALL
+SELECT 10, 5
+WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 10);
 
 
 INSERT INTO reviews(id, created, review, author_id, game_id)

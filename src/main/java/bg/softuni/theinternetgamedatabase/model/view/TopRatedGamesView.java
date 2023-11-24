@@ -1,4 +1,4 @@
-package bg.softuni.theinternetgamedatabase.model.dto;
+package bg.softuni.theinternetgamedatabase.model.view;
 
 public interface TopRatedGamesView extends FavoriteGamesView {
 

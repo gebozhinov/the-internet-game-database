@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.repository;
 
-import bg.softuni.theinternetgamedatabase.model.dto.FavoriteGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

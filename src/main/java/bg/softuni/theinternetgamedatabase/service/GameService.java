@@ -1,6 +1,7 @@
 package bg.softuni.theinternetgamedatabase.service;
 
-import bg.softuni.theinternetgamedatabase.model.dto.TopRatedGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
 import bg.softuni.theinternetgamedatabase.repository.GameRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,9 @@ public class GameService {
 
     public List<TopRatedGamesView> getTopRatedGames(Long id) {
         return this.gameRepository.getTopRatedGames(id).orElse(new ArrayList<>()).stream().limit(10L).toList();
+    }
+
+    public List<UpcomingGamesView> getUpcomingGames() {
+        return this.gameRepository.getUpcomingGames().orElse(new ArrayList<>()).stream().limit(10L).toList();
     }
 }

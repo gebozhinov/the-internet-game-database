@@ -1,4 +1,4 @@
-package bg.softuni.theinternetgamedatabase.model.dto;
+package bg.softuni.theinternetgamedatabase.model.view;
 
 import bg.softuni.theinternetgamedatabase.model.entity.Manufacture;
 
