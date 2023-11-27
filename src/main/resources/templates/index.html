@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -49,7 +49,7 @@
     </div>
 
 <th:block sec:authorize="isAuthenticated()" th:if="${favoriteGames.size() > 0}" >
-<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/">Favorite Games</a></h3 ></div>
+<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/game/all">Favorite Games</a></h3 ></div>
 
 <div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper" >

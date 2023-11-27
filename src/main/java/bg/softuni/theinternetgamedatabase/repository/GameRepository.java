@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.repository;
 
+import bg.softuni.theinternetgamedatabase.model.view.AllGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
@@ -12,6 +13,10 @@ import java.util.Optional;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, Long> {
+
+
+    @Query(value = "SELECT g.id, g.img_url, g.title, concat(left(g.description, 220), '...') as description FROM games g",nativeQuery = true)
+    Optional<List<AllGamesView>> getAllGames();
 
     @Query(value = "SELECT g.id, g.img_url, g.title, g.rating FROM users u " +
             "JOIN users_favorite_games fg on u.id = fg.user_id " +

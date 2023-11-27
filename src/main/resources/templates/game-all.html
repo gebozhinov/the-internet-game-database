@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>IGDB</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap"
+          rel="stylesheet"
+  >
+</head>
+<body class="home-index">
+<th:block th:insert="~{/fragments/header}"/>
+
+
+<section class="section">
+  <h1>All Games</h1>
+  <div class="grid" >
+    <div class="item" th:each="game : ${allGames}">
+      <img th:src="${game.getImg_Url()}">
+      <div class="item__details item--medium" >
+      <th:block th:text="${game.getTitle()}"></th:block>
+        <br>
+        <br>
+      <th:block th:text="${game.getDescription()}"></th:block>
+      </div>
+    </div>
+
+  </div>
+</section>
+  <th:block th:insert="~{/fragments/footer}"/>
+</body>
+</html>
