@@ -2,6 +2,7 @@ package bg.softuni.theinternetgamedatabase.web;
 
 import bg.softuni.theinternetgamedatabase.model.view.AllGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.service.GameService;
 import bg.softuni.theinternetgamedatabase.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,16 @@ public class GameController {
         model.addAttribute("favoriteGames", favoriteGames);
 
         return "game-favorites";
+    }
+
+    @GetMapping("/top-rated")
+    public String topRated(Model model) {
+
+        List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames("");
+
+        model.addAttribute("topRatedGames", topRatedGames);
+
+        return "game-top-rated";
     }
 
 }

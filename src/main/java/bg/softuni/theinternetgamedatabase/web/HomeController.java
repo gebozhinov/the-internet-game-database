@@ -30,7 +30,7 @@ public class HomeController {
         List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(userId, "home");
         model.addAttribute("favoriteGames", favoriteGames);
 
-        List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames(userId);
+        List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames("home");
         model.addAttribute("topRatedGames", topRatedGames);
 
         List<UpcomingGamesView> upcomingGames = this.gameService.getUpcomingGames();

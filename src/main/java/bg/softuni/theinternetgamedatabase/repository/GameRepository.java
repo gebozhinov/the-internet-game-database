@@ -18,12 +18,11 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     @Query(value = "SELECT g.id, g.img_url, g.title, concat(left(g.description, 220), '...') as description FROM games g",nativeQuery = true)
     Optional<List<AllGamesView>> getAllGames();
 
-    @Query(value = "SELECT g.id, g.img_url, g.title, g.rating FROM users u " +
+    @Query(value = "SELECT g.id, g.img_url, g.title, g.rating, concat(left(g.description, 220), '...') as description FROM users u " +
             "JOIN users_favorite_games fg on u.id = fg.user_id " +
             "JOIN games g on fg.game_id = g.id " +
-            "WHERE u.id = :id " +
             "ORDER BY g.rating desc",nativeQuery = true)
-    Optional<List<TopRatedGamesView>> getTopRatedGames(Long id);
+    Optional<List<TopRatedGamesView>> getTopRatedGames();
 
     @Query(value = "SELECT g.id, g.description, g.img_url, g.release_date, g.title FROM games g " +
             "WHERE g.release_date > now() " +
