@@ -3,6 +3,7 @@ package bg.softuni.theinternetgamedatabase.web;
 import bg.softuni.theinternetgamedatabase.model.view.AllGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
 import bg.softuni.theinternetgamedatabase.service.GameService;
 import bg.softuni.theinternetgamedatabase.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,7 @@ public class GameController {
 
         Long id = this.userService.findIdByUsername(principal.getName());
 
-        List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(id, "");
+        List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(id);
 
         model.addAttribute("favoriteGames", favoriteGames);
 
@@ -51,11 +52,21 @@ public class GameController {
     @GetMapping("/top-rated")
     public String topRated(Model model) {
 
-        List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames("");
+        List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames();
 
         model.addAttribute("topRatedGames", topRatedGames);
 
         return "game-top-rated";
+    }
+
+    @GetMapping("/coming-soon")
+    public String comingSoon(Model model) {
+
+        List<UpcomingGamesView> upcomingGames = this.gameService.getUpcomingGames();
+
+        model.addAttribute("upcomingGames", upcomingGames);
+
+        return "game-coming-soon";
     }
 
 }

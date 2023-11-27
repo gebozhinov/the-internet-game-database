@@ -71,7 +71,7 @@
 </th:block>
 
 <th:block sec:authorize="isAuthenticated()" th:if="${upcomingGames.size() > 0}">
-<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/">Coming Soon</a></h3 ></div>
+<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/game/coming-soon">Coming Soon</a></h3 ></div>
 
 <div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper">

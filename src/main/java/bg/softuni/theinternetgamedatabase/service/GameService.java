@@ -23,16 +23,11 @@ public class GameService {
         return this.gameRepository.getAllGames().orElse(new ArrayList<>());
     }
 
-    public List<TopRatedGamesView> getTopRatedGames(String page) {
-
-        if (page.equals("home")) {
-            return this.gameRepository.getTopRatedGames().orElse(new ArrayList<>()).stream().limit(10L).toList();
-        }
-
+    public List<TopRatedGamesView> getTopRatedGames() {
         return this.gameRepository.getTopRatedGames().orElse(new ArrayList<>());
     }
 
     public List<UpcomingGamesView> getUpcomingGames() {
-        return this.gameRepository.getUpcomingGames().orElse(new ArrayList<>()).stream().limit(10L).toList();
+        return this.gameRepository.getUpcomingGames().orElse(new ArrayList<>());
     }
 }

@@ -27,13 +27,13 @@ public class HomeController {
     public String home(Principal principal, Model model) {
         Long userId = this.userService.findIdByUsername(principal.getName());
 
-        List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(userId, "home");
+        List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(userId).stream().limit(10L).toList();
         model.addAttribute("favoriteGames", favoriteGames);
 
-        List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames("home");
+        List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames().stream().limit(10L).toList();
         model.addAttribute("topRatedGames", topRatedGames);
 
-        List<UpcomingGamesView> upcomingGames = this.gameService.getUpcomingGames();
+        List<UpcomingGamesView> upcomingGames = this.gameService.getUpcomingGames().stream().limit(10L).toList();
         model.addAttribute("upcomingGames", upcomingGames);
 
         return "index";

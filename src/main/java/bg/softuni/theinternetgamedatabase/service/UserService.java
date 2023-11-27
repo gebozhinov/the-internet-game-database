@@ -41,11 +41,7 @@ public class UserService {
         this.userRepository.save(user);
     }
 
-    public List<FavoriteGamesView> getFavoriteGames(Long id, String page) {
-        if (page.equals("home")) {
-            return this.userRepository.getFavoriteGames(id).orElse(new ArrayList<>()).stream().limit(10L).toList();
-        }
-
+    public List<FavoriteGamesView> getFavoriteGames(Long id) {
       return this.userRepository.getFavoriteGames(id).orElse(new ArrayList<>());
     }
 
