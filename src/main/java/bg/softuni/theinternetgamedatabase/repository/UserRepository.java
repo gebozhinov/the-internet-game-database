@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "WHERE email = :email",nativeQuery = true)
     Optional<User> findByEmail(String email);
 
-    @Query(value = "SELECT g.id, g.img_url, g.title FROM users u " +
+    @Query(value = "SELECT g.id, g.img_url, g.title, concat(left(g.description, 220), '...') as description FROM users u " +
             "JOIN users_favorite_games fg on u.id = fg.user_id " +
             "JOIN games g on fg.game_id = g.id " +
             "WHERE u.id = :id ",nativeQuery = true)

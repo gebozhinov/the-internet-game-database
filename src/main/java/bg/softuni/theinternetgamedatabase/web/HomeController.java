@@ -25,9 +25,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Principal principal, Model model) {
-        Long userId = this.userService.findById(principal.getName());
+        Long userId = this.userService.findIdByUsername(principal.getName());
 
-        List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(userId);
+        List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(userId, "home");
         model.addAttribute("favoriteGames", favoriteGames);
 
         List<TopRatedGamesView> topRatedGames = this.gameService.getTopRatedGames(userId);

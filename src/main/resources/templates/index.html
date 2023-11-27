@@ -49,7 +49,7 @@
     </div>
 
 <th:block sec:authorize="isAuthenticated()" th:if="${favoriteGames.size() > 0}" >
-<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/game/all">Favorite Games</a></h3 ></div>
+<div sec:authorize="isAuthenticated()"><h3 class="underline"><a href="/game/favorites">Favorite Games</a></h3 ></div>
 
 <div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper" >

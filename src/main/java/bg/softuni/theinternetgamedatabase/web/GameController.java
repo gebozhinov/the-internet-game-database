@@ -1,13 +1,15 @@
 package bg.softuni.theinternetgamedatabase.web;
 
 import bg.softuni.theinternetgamedatabase.model.view.AllGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.service.GameService;
+import bg.softuni.theinternetgamedatabase.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -15,9 +17,11 @@ import java.util.List;
 public class GameController {
 
     private final GameService gameService;
+    private final UserService userService;
 
-    public GameController(GameService gameService) {
+    public GameController(GameService gameService, UserService userService) {
         this.gameService = gameService;
+        this.userService = userService;
     }
 
     @GetMapping("/all")
@@ -29,6 +33,18 @@ public class GameController {
 
 
         return "game-all";
+    }
+
+    @GetMapping("/favorites")
+    public String favorites(Principal principal, Model model) {
+
+        Long id = this.userService.findIdByUsername(principal.getName());
+
+        List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(id, "");
+
+        model.addAttribute("favoriteGames", favoriteGames);
+
+        return "game-favorites";
     }
 
 }
