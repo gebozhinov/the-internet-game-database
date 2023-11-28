@@ -21,9 +21,10 @@
 
 
 <section class="section">
-    <h1>Favorites</h1>
+    <h1>Top 100</h1>
     <div class="grid" >
-        <div class="item" th:each="game : ${topRatedGames}">
+        <div th:each="game : ${topRatedGames}">
+            <a class="item" th:href="@{/game/{id}(id = ${game.id})}">
             <img th:src="${game.getImg_Url()}">
             <div class="item__details item--medium" >
                 <th:block th:text="${game.getTitle()}"></th:block>
@@ -34,6 +35,7 @@
                 <br>
                 <th:block th:text="${game.getDescription()}"></th:block>
             </div>
+            </a>
         </div>
 
     </div>

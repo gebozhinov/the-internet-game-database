@@ -22,7 +22,7 @@
         <div class="swiper-wrapper ">
                 <div class="swiper-slide">
                     <img src='/images/maingames/spider-man.jpg' alt="Marvel's Spider-Man 2">
-                    <h2><a href="/">Marvel's Spider-Man 2</a></h2>
+                    <h2><a th:href="@{/game/{id}(id = *{2})}">Marvel's Spider-Man 2</a></h2>
                 </div>
                 <div class="swiper-slide">
                     <img src='/images/maingames/forza.jpg' alt="Forza Motorsport">
@@ -54,7 +54,7 @@
 <div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper" >
         <div class="swiper-slide" th:each="game : ${favoriteGames}" th:object="${favoriteGames}">
-            <img th:src="${game.getImg_Url()}"><h2 class="text-cursor"><a href="/" th:text="${game.getTitle()}"></a></h2></div>
+            <img th:src="${game.getImg_Url()}"> <a th:href="@{/game/{id}(id = ${game.id})}"><h2 class="text-cursor" th:text="${game.getTitle()}"></h2></a></div>
     </div>
 </div>
 </th:block>
@@ -65,7 +65,7 @@
 <div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide" th:each="game : ${topRatedGames}" th:object="${topRatedGames}">
-            <img th:src="${game.getImg_Url()}"><h2 class="text-cursor"><a href="/" th:text="${game.getTitle()}"></a></h2></div>
+            <img th:src="${game.getImg_Url()}"><a th:href="@{/game/{id}(id = ${game.id})}"><h2 class="text-cursor" th:text="${game.getTitle()}"></h2></a></div>
     </div>
 </div>
 </th:block>
@@ -76,7 +76,7 @@
 <div sec:authorize="isAuthenticated()" class="swiper bottomSwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide" th:each="game : ${upcomingGames}" th:object="${upcomingGames}">
-            <img th:src="${game.getImg_Url()}"><h2 class="text-cursor"><a href="/" th:text="${game.getTitle()}"></a></h2></div>
+            <img th:src="${game.getImg_Url()}"><a th:href="@{/game/{id}(id = ${game.id})}"><h2 class="text-cursor" th:text="${game.getTitle()}"></h2></a></div>
     </div>
 </div>
 </th:block>

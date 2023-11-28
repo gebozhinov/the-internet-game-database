@@ -23,14 +23,16 @@
 <section class="section">
   <h1>All Games</h1>
   <div class="grid" >
-    <div class="item" th:each="game : ${allGames}">
-      <img th:src="${game.getImg_Url()}">
+    <div th:each="game : ${allGames}" >
+      <a class="item" th:href="@{/game/{id}(id = ${game.id})}">
+        <img th:src="${game.getImg_Url()}">
       <div class="item__details item--medium" >
       <th:block th:text="${game.getTitle()}"></th:block>
         <br>
         <br>
       <th:block th:text="${game.getDescription()}"></th:block>
       </div>
+      </a>
     </div>
 
   </div>

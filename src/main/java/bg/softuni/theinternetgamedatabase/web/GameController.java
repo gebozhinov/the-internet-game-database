@@ -9,6 +9,7 @@ import bg.softuni.theinternetgamedatabase.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -24,6 +25,12 @@ public class GameController {
     public GameController(GameService gameService, UserService userService) {
         this.gameService = gameService;
         this.userService = userService;
+    }
+
+    @GetMapping("/{id}")
+    public String getGameDetails(@PathVariable("id") Long id) {
+
+        return "game-details";
     }
 
     @GetMapping("/all")
