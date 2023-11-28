@@ -24,7 +24,7 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "ORDER BY g.rating desc",nativeQuery = true)
     Optional<List<TopRatedGamesView>> getTopRatedGames();
 
-    @Query(value = "SELECT g.id, g.description, g.img_url, g.release_date, g.title, concat(left(g.description, 220), '...') as description FROM games g " +
+    @Query(value = "SELECT g.id, g.description, g.img_url, g.release_date, g.title, concat(left(g.description, 255), '...') as description FROM games g " +
             "WHERE g.release_date > now() " +
             "ORDER BY g.release_date",nativeQuery = true)
     Optional<List<UpcomingGamesView>> getUpcomingGames();
