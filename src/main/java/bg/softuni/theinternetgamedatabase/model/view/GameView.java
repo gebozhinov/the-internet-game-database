@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.model.view;
 
-public interface AllGamesView {
+public interface GameView {
     Long getId();
     String getTitle();
     String getImg_Url();

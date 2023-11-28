@@ -1,6 +1,7 @@
 package bg.softuni.theinternetgamedatabase.web;
 
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
 import bg.softuni.theinternetgamedatabase.service.GameService;
@@ -26,6 +27,9 @@ public class HomeController {
     @GetMapping("/")
     public String home(Principal principal, Model model) {
         Long userId = this.userService.findIdByUsername(principal.getName());
+
+        List<GameView> onFocusGames = this.gameService.getOnFocusGames();
+        model.addAttribute("onFocusGames", onFocusGames);
 
         List<FavoriteGamesView> favoriteGames = this.userService.getFavoriteGames(userId).stream().limit(10L).toList();
         model.addAttribute("favoriteGames", favoriteGames);

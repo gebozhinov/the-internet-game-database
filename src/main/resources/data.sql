@@ -287,3 +287,7 @@ WHERE NOT EXISTS (SELECT author_id FROM reviews WHERE author_id = 1)
 UNION ALL
 SELECT 2, TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'You can play it all day long!', 1, 1
 WHERE NOT EXISTS (SELECT author_id FROM reviews WHERE author_id = 1);
+
+UPDATE games
+SET on_focus = true
+WHERE id IN (2,3,4,5)

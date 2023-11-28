@@ -37,6 +37,8 @@ public class Game {
     private String description;
     @Column
     private Double rating;
+    @Column(name = "on_focus", columnDefinition = "boolean default false")
+    private boolean onFocus;
     @OneToMany(targetEntity = Review.class, mappedBy = "game")
     private Set<Review> reviews;
     @ManyToMany(targetEntity = User.class, mappedBy = "favoriteGames")
@@ -132,6 +134,15 @@ public class Game {
 
     public Game setUserFavorites(Set<User> userFavorites) {
         this.userFavorites = userFavorites;
+        return this;
+    }
+
+    public boolean isOnFocus() {
+        return onFocus;
+    }
+
+    public Game setOnFocus(boolean onFocus) {
+        this.onFocus = onFocus;
         return this;
     }
 }

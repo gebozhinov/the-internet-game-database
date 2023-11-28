@@ -20,21 +20,9 @@
 <th:block th:insert="~{/fragments/header}"/>
     <div class="mainSwiper topSwiper">
         <div class="swiper-wrapper ">
-                <div class="swiper-slide">
-                    <img src='/images/maingames/spider-man.jpg' alt="Marvel's Spider-Man 2">
-                    <h2><a th:href="@{/game/{id}(id = *{2})}">Marvel's Spider-Man 2</a></h2>
-                </div>
-                <div class="swiper-slide">
-                    <img src='/images/maingames/forza.jpg' alt="Forza Motorsport">
-                    <h2><a href="/">Forza Motorsport</a></h2>
-                </div>
-                <div class="swiper-slide">
-                    <img src='/images/maingames/mirage.jpg' alt="Assassin's Creed Mirage">
-                    <h2><a href="/">Assassin's Creed Mirage</a></h2>
-                </div>
-                <div class="swiper-slide">
-                    <img src='/images/maingames/cyberpunk.jpg' alt="Cyberpunk 2077: Phantom Liberty">
-                    <h2><a href="/">Cyberpunk 2077: Phantom Liberty</a></h2>
+                <div class="swiper-slide" th:each="game : ${onFocusGames}">
+                    <img th:src="${game.getImg_Url()}" alt="">
+                    <h2><a th:href="@{/game/{id}(id = *{game.id})}" th:text="${game.getTitle()}"></a></h2>
                 </div>
             </div>
             <div class="swiper-pagination"></div>

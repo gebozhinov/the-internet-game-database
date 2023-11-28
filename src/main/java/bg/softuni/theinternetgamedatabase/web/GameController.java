@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.view.AllGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
@@ -36,7 +36,7 @@ public class GameController {
     @GetMapping("/all")
     public String all(Model model) {
 
-        List<AllGamesView> allGames = this.gameService.getAllGames();
+        List<GameView> allGames = this.gameService.getAllGames();
 
         model.addAttribute("allGames", allGames);
 
