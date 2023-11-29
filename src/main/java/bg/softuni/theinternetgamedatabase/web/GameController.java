@@ -76,4 +76,10 @@ public class GameController {
         return "game-coming-soon";
     }
 
+    @GetMapping("/add")
+    public String add() {
+
+        return "game-add";
+    }
+
 }
