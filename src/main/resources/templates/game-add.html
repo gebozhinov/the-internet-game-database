@@ -5,10 +5,172 @@
 <body class="home-index">
 <th:block th:insert="~{/fragments/header}"/>
 
+<div class="centering">
+  <form class="add-game-form"
+        th:method="post"
+        th:action="@{/login}">
+    <div class="add-game-row">
+      <img
+              class="add-game-new"
+              src="/images/logo.png"
+              alt="Login"
+      >
+      <h1>Add Game!</h1>
+    </div>
+
+    <div class="text-field">
+      <label for="title">Game name:</label>
+      <input
+              aria-label="Title"
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Game name"
+              required
+      >
+      <img
+              alt="User Icon"
+              title="User Icon"
+              src="/images/loginregister/user.svg">
+    </div>
+    <small class="incorrect-data text-danger border-danger"
+
+    ></small>
+    <div class="text-field">
+      <label for="cover">Game cover:</label>
+      <input
+              aria-label="Cover"
+              type="file"
+              id="cover"
+              name="cover"
+              placeholder="Game name"
+              required
+      >
+      <img
+              alt="User Icon"
+              title="User Icon"
+              src="/images/loginregister/user.svg">
+    </div>
+    <small id="inputGpxError" class="incorrect-data text-danger border-danger"
+
+    ></small>
+
+    <div class="text-field">
+      <label for="manufacture">Company:</label>
+      <select
+              id="manufacture"
+              name="manufacture"
+              class="custom-select"
+              aria-describedby="categoryHelpInline">
+        <option value="-1" selected>Select company</option>
+        <option th:each="manufactor : ${manufacturesData}"
+                th:value="${manufactor.id}" th:text="${manufactor.companyName}"></option>
+      </select>
+      <img
+              alt="User Icon"
+              title="User Icon"
+              src="/images/loginregister/user.svg">
+    </div>
+    <small  class="incorrect-data text-danger border-danger"
+
+    ></small>
+
+    <div class="text-field">
+      <label for="genre">Genre:</label>
+      <select multiple th:class="chosen-select"
+              id="genre"
+              name="genre"
+              aria-describedby="categoryHelpInline">
+        <option th:each="genre : ${T(bg.softuni.theinternetgamedatabase.model.enums.GameGenre).values()}"
+                th:value="${genre.ordinal()}" th:text="${genre.name()}"></option>
+      </select>
+      <img
+              alt="User Icon"
+              title="User Icon"
+              src="/images/loginregister/user.svg">
+    </div>
+    <small  class="incorrect-data text-danger border-danger"
+
+    ></small>
+    <div class="text-field">
+      <label for="platform">Platform:</label>
+      <select multiple th:class="chosen-select"
+              id="platform"
+              name="platform"
+              aria-describedby="categoryHelpInline">
+        <option th:each="platform : ${platformData}"
+                th:value="${platform.id}" th:text="${platform.name}"></option>
+      </select>
+      <img
+              alt="User Icon"
+              title="User Icon"
+              src="/images/loginregister/user.svg">
+    </div>
+    <small  class="incorrect-data text-danger border-danger"
+
+    ></small>
+
+    <div class="text-field">
+      <label for="date">Release Date:</label>
+      <input
+              aria-label="Date"
+              type="date"
+              id="date"
+              name="date"
+              placeholder="Release date"
+
+      >
+      <img
+              alt="User Icon"
+              title="User Icon"
+              src="/images/loginregister/user.svg">
+    </div>
+    <small  class="incorrect-data text-danger border-danger"
+
+    ></small>
+
+    <div class="text-field">
+      <label for="description"></label>
+      <textarea
+              aria-label="Description"
+              type="text"
+              rows="5"
+              cols="50"
+              id="description"
+              name="description"
+              placeholder="Description..."
+              required></textarea>
+    </div>
+    <small  class="incorrect-data text-danger border-danger"
+
+    ></small>
+
+    <div class="text-field">
+      <label for="rating">Game rating:</label>
+      <input
+              aria-label="Rating"
+              type="text"
+              id="rating"
+              name="rating"
+              placeholder="Rating"
+              required
+      >
+      <img
+              alt="User Icon"
+              title="User Icon"
+              src="/images/loginregister/user.svg">
+    </div>
+    <small class="incorrect-data text-danger border-danger"
+
+    ></small>
 
 
-
+  </form>
+</div>
 
 <th:block th:insert="~{/fragments/footer}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+<script src="/js/chosen.js"></script>
 </body>
 </html>

@@ -718,22 +718,23 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    height: 150%;
+    width: 100%;
 }
 .add-game-form {
     display: flex;
     flex-direction: column;
     position: relative;
     gap: 16px;
-    background-color: var(--background);
-    border: 1px solid var(--primary);
+    background-color: #261E5A;
+    border: 1px solid #DD946F;
     border-radius: 16px;
-    box-shadow: 0 20px 60px var(--aura);
+    box-shadow: 0 20px 60px #9265CA80;
     min-width: 280px;
-    max-width: 460px;
+    max-width: 540px;
     width: 100%;
     padding: 32px;
+    color: white;
 }
 
 .add-game-row {
@@ -744,13 +745,21 @@ h1 {
     flex-direction: column;
     gap: 8px;
 }
+
+.add-game-new {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .text-field input {
-    color: var(--secondary);
+    color: #EFD0F8;
     font-size: 16px;
     font-weight: 500;
-    max-width: 100%;
+    max-width: 85%;
     width: 100%;
-    border: 1px solid var(--secondary);
+    border: 1px solid #EFD0F8;
     height: 50px;
     letter-spacing: .03rem;
     background-color: transparent;

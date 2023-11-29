@@ -1,10 +1,14 @@
 package bg.softuni.theinternetgamedatabase.web;
 
+import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.PlatformDTO;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
 import bg.softuni.theinternetgamedatabase.service.GameService;
+import bg.softuni.theinternetgamedatabase.service.ManufactureService;
+import bg.softuni.theinternetgamedatabase.service.PlatformService;
 import bg.softuni.theinternetgamedatabase.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +25,16 @@ public class GameController {
 
     private final GameService gameService;
     private final UserService userService;
-
-    public GameController(GameService gameService, UserService userService) {
+    private final ManufactureService manufactureService;
+    private final PlatformService platformService;
+    public GameController(GameService gameService,
+                          UserService userService,
+                          ManufactureService manufactureService,
+                          PlatformService platformService) {
         this.gameService = gameService;
         this.userService = userService;
+        this.manufactureService = manufactureService;
+        this.platformService = platformService;
     }
 
     @GetMapping("/{id}")
@@ -77,7 +87,13 @@ public class GameController {
     }
 
     @GetMapping("/add")
-    public String add() {
+    public String add(Model model) {
+
+        List<ManufactureDTO> manufacturesData = this.manufactureService.getManufacturesData();
+        model.addAttribute("manufacturesData", manufacturesData);
+
+        List<PlatformDTO> platformData = this.platformService.getPlatformData();
+        model.addAttribute("platformData", platformData);
 
         return "game-add";
     }
