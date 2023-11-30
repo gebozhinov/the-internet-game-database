@@ -8,7 +8,7 @@
 <div class="centering">
   <form class="add-game-form"
         th:method="post"
-        th:action="@{/login}">
+        th:action="@{/game/add}" enctype="multipart/form-data">
     <div class="add-game-row">
       <img
               class="add-game-new"
@@ -19,57 +19,46 @@
     </div>
 
     <div class="text-field">
-      <label for="title">Game name:</label>
+      <label for="title">Game title:</label>
       <input
               aria-label="Title"
               type="text"
               id="title"
               name="title"
-              placeholder="Game name"
-              required
+              placeholder="Game title"
       >
-      <img
-              alt="User Icon"
-              title="User Icon"
-              src="/images/loginregister/user.svg">
+     
     </div>
     <small class="incorrect-data text-danger border-danger"
 
     ></small>
     <div class="text-field">
-      <label for="cover">Game cover:</label>
+      <label for="imgUrl">Game cover:</label>
       <input
-              aria-label="Cover"
+              aria-label="imgUrl"
               type="file"
-              id="cover"
-              name="cover"
-              placeholder="Game name"
-              required
+              id="imgUrl"
+              name="imgUrl"
+              placeholder="Game cover"
       >
-      <img
-              alt="User Icon"
-              title="User Icon"
-              src="/images/loginregister/user.svg">
+
     </div>
     <small id="inputGpxError" class="incorrect-data text-danger border-danger"
 
     ></small>
 
     <div class="text-field">
-      <label for="manufacture">Company:</label>
+      <label for="manufactureId">Company:</label>
       <select
-              id="manufacture"
-              name="manufacture"
+              id="manufactureId"
+              name="manufactureId"
               class="custom-select"
               aria-describedby="categoryHelpInline">
         <option value="-1" selected>Select company</option>
         <option th:each="manufactor : ${manufacturesData}"
                 th:value="${manufactor.id}" th:text="${manufactor.companyName}"></option>
       </select>
-      <img
-              alt="User Icon"
-              title="User Icon"
-              src="/images/loginregister/user.svg">
+
     </div>
     <small  class="incorrect-data text-danger border-danger"
 
@@ -84,46 +73,37 @@
         <option th:each="genre : ${T(bg.softuni.theinternetgamedatabase.model.enums.GameGenre).values()}"
                 th:value="${genre.ordinal()}" th:text="${genre.name()}"></option>
       </select>
-      <img
-              alt="User Icon"
-              title="User Icon"
-              src="/images/loginregister/user.svg">
+
     </div>
     <small  class="incorrect-data text-danger border-danger"
 
     ></small>
     <div class="text-field">
-      <label for="platform">Platform:</label>
+      <label for="platformId">Platform:</label>
       <select multiple th:class="chosen-select"
-              id="platform"
-              name="platform"
+              id="platformId"
+              name="platformId"
               aria-describedby="categoryHelpInline">
         <option th:each="platform : ${platformData}"
                 th:value="${platform.id}" th:text="${platform.name}"></option>
       </select>
-      <img
-              alt="User Icon"
-              title="User Icon"
-              src="/images/loginregister/user.svg">
+
     </div>
     <small  class="incorrect-data text-danger border-danger"
 
     ></small>
 
     <div class="text-field">
-      <label for="date">Release Date:</label>
+      <label for="releaseDate">Release Date:</label>
       <input
-              aria-label="Date"
+              aria-label="releaseDate"
               type="date"
-              id="date"
-              name="date"
+              id="releaseDate"
+              name="releaseDate"
               placeholder="Release date"
 
       >
-      <img
-              alt="User Icon"
-              title="User Icon"
-              src="/images/loginregister/user.svg">
+
     </div>
     <small  class="incorrect-data text-danger border-danger"
 
@@ -138,8 +118,7 @@
               cols="50"
               id="description"
               name="description"
-              placeholder="Description..."
-              required></textarea>
+              placeholder="Description..."></textarea>
     </div>
     <small  class="incorrect-data text-danger border-danger"
 
@@ -153,17 +132,15 @@
               id="rating"
               name="rating"
               placeholder="Rating"
-              required
       >
-      <img
-              alt="User Icon"
-              title="User Icon"
-              src="/images/loginregister/user.svg">
+
     </div>
     <small class="incorrect-data text-danger border-danger"
 
     ></small>
-
+    <input type="submit" class="add-game-button" value="Add" >
+    <div class="add-game-action">
+    </div>
 
   </form>
 </div>

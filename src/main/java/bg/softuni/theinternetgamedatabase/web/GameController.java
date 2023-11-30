@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.web;
 
+import bg.softuni.theinternetgamedatabase.model.dto.GameDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.PlatformDTO;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -96,6 +98,15 @@ public class GameController {
         model.addAttribute("platformData", platformData);
 
         return "game-add";
+    }
+
+    @PostMapping("/add")
+    public String add(GameDTO gameDTO) {
+
+
+        System.out.println();
+
+        return "redirect:/";
     }
 
 }
