@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.model.validation;
 
+import bg.softuni.theinternetgamedatabase.repository.GameRepository;
 import bg.softuni.theinternetgamedatabase.repository.UserRepository;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -7,10 +8,13 @@ import jakarta.validation.ConstraintValidatorContext;
 public class UniqueDataValidator implements ConstraintValidator<UniqueData, String> {
 
     private final UserRepository userRepository;
+    private final GameRepository gameRepository;
     private String fieldName;
 
-    public UniqueDataValidator(UserRepository userRepository) {
+    public UniqueDataValidator(UserRepository userRepository,
+                               GameRepository gameRepository) {
         this.userRepository = userRepository;
+        this.gameRepository = gameRepository;
     }
 
     @Override
@@ -24,6 +28,7 @@ public class UniqueDataValidator implements ConstraintValidator<UniqueData, Stri
        return switch (fieldName) {
             case "username" -> this.userRepository.findByUsername(value).isEmpty();
             case "email" -> this.userRepository.findByEmail(value).isEmpty();
+            case "title" -> this.gameRepository.findByTitle(value).isEmpty();
             default -> false;
         };
 

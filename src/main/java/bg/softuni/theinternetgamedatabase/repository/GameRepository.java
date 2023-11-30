@@ -31,4 +31,8 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "WHERE g.release_date > now() " +
             "ORDER BY g.release_date",nativeQuery = true)
     Optional<List<UpcomingGamesView>> getUpcomingGames();
+
+    @Query(value = "SELECT * FROM games " +
+            "WHERE title = :title",nativeQuery = true)
+    Optional<Game> findByTitle(String title);
 }

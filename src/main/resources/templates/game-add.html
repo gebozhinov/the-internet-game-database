@@ -8,7 +8,8 @@
 <div class="centering">
   <form class="add-game-form"
         th:method="post"
-        th:action="@{/game/add}" enctype="multipart/form-data">
+        th:action="@{/game/add}" enctype="multipart/form-data"
+        th:object="${addGameDTO}">
     <div class="add-game-row">
       <img
               class="add-game-new"
@@ -21,35 +22,37 @@
     <div class="text-field">
       <label for="title">Game title:</label>
       <input
+              th:field="*{title}"
+              th:errorclass="is-invalid"
               aria-label="Title"
               type="text"
               id="title"
               name="title"
               placeholder="Game title"
       >
-     
+
     </div>
     <small class="incorrect-data text-danger border-danger"
-
+           th:each="err : ${#fields.errors('title')}"
+           th:text="${err}"
     ></small>
     <div class="text-field">
       <label for="imgUrl">Game cover:</label>
       <input
+              th:field="*{imgUrl}"
+              th:errorclass="is-invalid"
               aria-label="imgUrl"
               type="file"
               id="imgUrl"
               name="imgUrl"
               placeholder="Game cover"
       >
-
     </div>
-    <small id="inputGpxError" class="incorrect-data text-danger border-danger"
-
-    ></small>
-
     <div class="text-field">
       <label for="manufactureId">Company:</label>
       <select
+              th:field="*{manufactureId}"
+              th:errorclass="is-invalid"
               id="manufactureId"
               name="manufactureId"
               class="custom-select"
@@ -61,26 +64,32 @@
 
     </div>
     <small  class="incorrect-data text-danger border-danger"
-
+            th:each="err : ${#fields.errors('manufactureId')}"
+            th:text="${err}"
     ></small>
 
     <div class="text-field">
       <label for="genre">Genre:</label>
       <select multiple th:class="chosen-select"
+              th:field="*{genre}"
+              th:errorclass="is-invalid"
               id="genre"
               name="genre"
               aria-describedby="categoryHelpInline">
         <option th:each="genre : ${T(bg.softuni.theinternetgamedatabase.model.enums.GameGenre).values()}"
-                th:value="${genre.ordinal()}" th:text="${genre.name()}"></option>
+                th:value="${genre.name()}" th:text="${genre.name()}"></option>
       </select>
 
     </div>
     <small  class="incorrect-data text-danger border-danger"
-
+            th:each="err : ${#fields.errors('genre')}"
+            th:text="${err}"
     ></small>
     <div class="text-field">
       <label for="platformId">Platform:</label>
       <select multiple th:class="chosen-select"
+              th:field="*{platformId}"
+              th:errorclass="is-invalid"
               id="platformId"
               name="platformId"
               aria-describedby="categoryHelpInline">
@@ -90,28 +99,26 @@
 
     </div>
     <small  class="incorrect-data text-danger border-danger"
-
+            th:each="err : ${#fields.errors('platformId')}"
+            th:text="${err}"
     ></small>
 
     <div class="text-field">
       <label for="releaseDate">Release Date:</label>
       <input
+              th:field="*{releaseDate}"
               aria-label="releaseDate"
               type="date"
               id="releaseDate"
               name="releaseDate"
               placeholder="Release date"
-
       >
-
     </div>
-    <small  class="incorrect-data text-danger border-danger"
-
-    ></small>
 
     <div class="text-field">
       <label for="description"></label>
       <textarea
+              th:field="*{description}"
               aria-label="Description"
               type="text"
               rows="5"
@@ -120,13 +127,12 @@
               name="description"
               placeholder="Description..."></textarea>
     </div>
-    <small  class="incorrect-data text-danger border-danger"
-
-    ></small>
 
     <div class="text-field">
       <label for="rating">Game rating:</label>
       <input
+              th:field="*{rating}"
+              th:errorclass="is-invalid"
               aria-label="Rating"
               type="text"
               id="rating"
@@ -136,7 +142,8 @@
 
     </div>
     <small class="incorrect-data text-danger border-danger"
-
+           th:each="err : ${#fields.errors('rating')}"
+           th:text="${err}"
     ></small>
     <input type="submit" class="add-game-button" value="Add" >
     <div class="add-game-action">

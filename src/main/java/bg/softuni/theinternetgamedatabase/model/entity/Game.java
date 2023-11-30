@@ -3,6 +3,7 @@ package bg.softuni.theinternetgamedatabase.model.entity;
 import bg.softuni.theinternetgamedatabase.model.enums.GameGenre;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -36,7 +37,7 @@ public class Game {
     @Column(columnDefinition = "TEXT")
     private String description;
     @Column
-    private Double rating;
+    private BigDecimal rating;
     @Column(name = "on_focus", columnDefinition = "boolean default false")
     private boolean onFocus;
     @OneToMany(targetEntity = Review.class, mappedBy = "game")
@@ -97,11 +98,11 @@ public class Game {
         return this;
     }
 
-    public Double getRating() {
+    public BigDecimal getRating() {
         return rating;
     }
 
-    public Game setRating(Double rating) {
+    public Game setRating(BigDecimal rating) {
         this.rating = rating;
         return this;
     }

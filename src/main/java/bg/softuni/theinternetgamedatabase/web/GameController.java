@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.dto.GameDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.AddGameDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.PlatformDTO;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
@@ -11,12 +11,12 @@ import bg.softuni.theinternetgamedatabase.service.GameService;
 import bg.softuni.theinternetgamedatabase.service.ManufactureService;
 import bg.softuni.theinternetgamedatabase.service.PlatformService;
 import bg.softuni.theinternetgamedatabase.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -37,6 +37,12 @@ public class GameController {
         this.userService = userService;
         this.manufactureService = manufactureService;
         this.platformService = platformService;
+    }
+
+
+    @ModelAttribute("addGameDTO")
+    public AddGameDTO addGameDTO() {
+        return new AddGameDTO();
     }
 
     @GetMapping("/{id}")
@@ -101,8 +107,15 @@ public class GameController {
     }
 
     @PostMapping("/add")
-    public String add(GameDTO gameDTO) {
+    public String add(@Valid AddGameDTO addGameDTO, BindingResult bindingResult,
+                      RedirectAttributes redirectAttributes) {
 
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("addGameDTO", addGameDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addGameDTO",
+                    bindingResult);
+            return "redirect:/game/add";
+        }
 
         System.out.println();
 
