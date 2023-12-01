@@ -51,7 +51,7 @@ public class UserController {
 
         this.userService.register(registerUserDTO);
 
-        return "redirect:/home";
+        return "redirect:/";
     }
 
 }
