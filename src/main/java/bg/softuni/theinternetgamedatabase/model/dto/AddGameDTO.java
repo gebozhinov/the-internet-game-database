@@ -14,7 +14,7 @@ public class AddGameDTO {
     @UniqueData(fieldName = "title", message = "The game is already registered.")
     private String title;
 
-    private MultipartFile imgUrl;
+    private MultipartFile image;
     @Positive(message = "Select manufacture.")
     @NotNull(message = "Select manufacture.")
     private Long manufactureId;
@@ -26,7 +26,6 @@ public class AddGameDTO {
     private String description;
     @DecimalMin(value = "0", message = "Rating should be positive.")
     @DecimalMax(value = "10", message = "Rating should be max 10.")
-    @NotNull(message = "Rating cannot be empty.")
     private BigDecimal rating;
 
     public String getTitle() {
@@ -38,12 +37,12 @@ public class AddGameDTO {
         return this;
     }
 
-    public MultipartFile getImgUrl() {
-        return imgUrl;
+    public MultipartFile getImage() {
+        return image;
     }
 
-    public AddGameDTO setImgUrl(MultipartFile imgUrl) {
-        this.imgUrl = imgUrl;
+    public AddGameDTO setImage(MultipartFile image) {
+        this.image = image;
         return this;
     }
 

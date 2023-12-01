@@ -3,6 +3,7 @@ package bg.softuni.theinternetgamedatabase.web;
 import bg.softuni.theinternetgamedatabase.model.dto.AddGameDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.PlatformDTO;
+import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
@@ -108,7 +109,7 @@ public class GameController {
 
     @PostMapping("/add")
     public String add(@Valid AddGameDTO addGameDTO, BindingResult bindingResult,
-                      RedirectAttributes redirectAttributes) {
+                      RedirectAttributes redirectAttributes, Principal principal) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addGameDTO", addGameDTO);
@@ -117,9 +118,9 @@ public class GameController {
             return "redirect:/game/add";
         }
 
-        System.out.println();
+        Game game = this.gameService.add(addGameDTO, principal);
 
-        return "redirect:/";
+        return "redirect:/game/" + game.getId();
     }
 
 }

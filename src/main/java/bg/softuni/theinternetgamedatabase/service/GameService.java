@@ -13,7 +13,9 @@ import bg.softuni.theinternetgamedatabase.repository.GameRepository;
 import bg.softuni.theinternetgamedatabase.repository.ManufactureRepository;
 import bg.softuni.theinternetgamedatabase.repository.PlatformRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -26,15 +28,18 @@ public class GameService {
     private final GameRepository gameRepository;
     private final ManufactureRepository manufactureRepository;
     private final PlatformRepository platformRepository;
+    private final ImageCloudService imageCloudService;
     private final GameMapper gameMapper;
 
     public GameService(GameRepository gameRepository,
                        ManufactureRepository manufactureRepository,
                        PlatformRepository platformRepository,
+                       ImageCloudService imageCloudService,
                        GameMapper gameMapper) {
         this.gameRepository = gameRepository;
         this.manufactureRepository = manufactureRepository;
         this.platformRepository = platformRepository;
+        this.imageCloudService = imageCloudService;
         this.gameMapper = gameMapper;
     }
 
@@ -53,12 +58,16 @@ public class GameService {
         return this.gameRepository.getUpcomingGames().orElse(new ArrayList<>());
     }
 
-    public void add(AddGameDTO addGameDTO) {
+    public Game add(AddGameDTO addGameDTO, Principal principal) {
 
         Game game = this.gameMapper.addGameDtoToGame(addGameDTO);
         game.setManufacture(this.setManufacture(addGameDTO.getManufactureId()));
         game.setGenres(this.setGameGenres(addGameDTO.getGenre()));
         game.setPlatform(this.setPlatform(addGameDTO.getPlatformId()));
+
+        game.setImgUrl(this.imageCloudService.saveImage(addGameDTO.getImage(), principal));
+
+       return this.gameRepository.save(game);
 
     }
 
@@ -69,8 +78,8 @@ public class GameService {
 
         Set<Platform> platforms = new HashSet<>();
 
-        for (int i = 0; i < platformIds.length; i++) {
-            Platform platform = this.platformRepository.findById(platformIds[i]).get();
+        for (Long platformId : platformIds) {
+            Platform platform = this.platformRepository.findById(platformId).get();
             platforms.add(platform);
         }
 
@@ -80,8 +89,8 @@ public class GameService {
 
         Set<GameGenre> genres = new HashSet<>();
 
-        for (int i = 0; i < genre.length; i++) {
-            genres.add(GameGenre.valueOf(genre[i]));
+        for (String s : genre) {
+            genres.add(GameGenre.valueOf(s));
         }
 
         return genres;

@@ -21,9 +21,8 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     @Query(value = "SELECT g.id, g.img_url, g.title FROM games g " +
             "WHERE g.on_focus = true", nativeQuery = true)
     Optional<List<GameView>> getOnFocusGames();
-    @Query(value = "SELECT g.id, g.img_url, g.title, g.rating, concat(left(g.description, 255), '...') as description FROM users u " +
-            "JOIN users_favorite_games fg on u.id = fg.user_id " +
-            "JOIN games g on fg.game_id = g.id " +
+    @Query(value = "SELECT g.id, g.img_url, g.title, g.rating, concat(left(g.description, 255), '...') as description FROM games g " +
+            "WHERE g.rating is not null " +
             "ORDER BY g.rating desc",nativeQuery = true)
     Optional<List<TopRatedGamesView>> getTopRatedGames();
 
