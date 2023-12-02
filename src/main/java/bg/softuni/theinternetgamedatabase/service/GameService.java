@@ -1,6 +1,7 @@
 package bg.softuni.theinternetgamedatabase.service;
 
 import bg.softuni.theinternetgamedatabase.model.dto.AddGameDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.GameDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.model.entity.Manufacture;
 import bg.softuni.theinternetgamedatabase.model.entity.Platform;
@@ -43,6 +44,9 @@ public class GameService {
         this.gameMapper = gameMapper;
     }
 
+    public GameDTO findGameById(Long id) {
+      return  this.gameRepository.findGameById(id).get();
+    }
     public List<GameView> getAllGames() {
         return this.gameRepository.getAllGames().orElse(new ArrayList<>());
     }

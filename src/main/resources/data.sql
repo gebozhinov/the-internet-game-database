@@ -53,7 +53,11 @@ WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 9);
 
 
 INSERT INTO games(rating, release_date, manufacture_id, description, title, img_url)
-SELECT 9.5, TO_DATE('2010-11-02', 'YYYY-MM-DD'), 1, 'Good game!', 'GTA5', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700589423/igdb/vqifsqhvwsfgwygpoup9.jpg'
+SELECT 9.5, TO_DATE('2010-11-02', 'YYYY-MM-DD'), 1, 'Grand Theft Auto V is a vast open world game set in Los Santos, ' ||
+                                                    'a sprawling sun-soaked metropolis struggling to stay afloat in an era of economic uncertainty and cheap reality TV.' ||
+                                                    ' The game blends storytelling and gameplay in new ways as players ' ||
+                                                    'repeatedly jump in and out of the lives of the game’s three lead characters, playing all sides of the game’s interwoven story.',
+    'GTA5', 'https://res.cloudinary.com/dinjk0zq4/image/upload/v1700589423/igdb/vqifsqhvwsfgwygpoup9.jpg'
 WHERE NOT EXISTS(SELECT id FROM games WHERE id = 1)
 UNION ALL
 SELECT 8.8, TO_DATE('2023-10-10', 'YYYY-MM-DD'), 2, 'The incredible power of the symbiote forces Peter and Miles to face the ultimate test of strength,' ||

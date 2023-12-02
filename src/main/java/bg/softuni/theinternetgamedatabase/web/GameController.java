@@ -1,6 +1,7 @@
 package bg.softuni.theinternetgamedatabase.web;
 
 import bg.softuni.theinternetgamedatabase.model.dto.AddGameDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.GameDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.PlatformDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
@@ -47,7 +48,10 @@ public class GameController {
     }
 
     @GetMapping("/{id}")
-    public String getGameDetails(@PathVariable("id") Long id) {
+    public String getGameDetails(@PathVariable("id") Long id, Model model) {
+
+        GameDTO gameDTO = this.gameService.findGameById(id);
+        model.addAttribute("gameDTO", gameDTO);
 
         return "game-details";
     }
