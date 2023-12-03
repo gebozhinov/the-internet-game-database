@@ -26,7 +26,11 @@
             </form>
             <form th:method="post"
                   th:action="@{/game/{id}/add-on-focus(id = ${gameDTO.id})}">
-                <button class="btn" >Add on Focus</button>
+                <button  class="btn" sec:authorize="hasAuthority('ADMIN')" th:if="${isOnFocus == false}" >Add on Focus</button>
+            </form>
+            <form th:method="post"
+                  th:action="@{/game/{id}/remove-from-focus(id = ${gameDTO.id})}">
+                <button  class="btn" sec:authorize="hasAuthority('ADMIN')" th:if="${isOnFocus == true}" >Remove from Focus</button>
             </form>
         </div>
         <div class="game-detail-swiper">

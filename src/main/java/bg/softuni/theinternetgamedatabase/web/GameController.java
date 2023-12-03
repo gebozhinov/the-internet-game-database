@@ -54,6 +54,8 @@ public class GameController {
         model.addAttribute("gameDTO", gameDTO);
         boolean inFavorites = this.gameService.isInFavorites(id, principal);
         model.addAttribute("isInFavorites", inFavorites);
+        boolean isOnFocus = this.gameService.isOnFocus(id);
+        model.addAttribute("isOnFocus", isOnFocus);
 
         return "game-details";
     }
@@ -76,6 +78,16 @@ public class GameController {
     }
     @PostMapping("/{id}/add-on-focus")
     public String addOnFocus(@PathVariable("id") Long id, Principal principal, Model model) {
+
+        this.gameService.addOnFocus(id);
+
+        return this.getGameDetails(id, principal, model);
+
+    }
+    @PostMapping("/{id}/remove-from-focus")
+    public String removeFromFocus(@PathVariable("id") Long id, Principal principal, Model model) {
+
+        this.gameService.removeFromFocus(id);
 
         return this.getGameDetails(id, principal, model);
 

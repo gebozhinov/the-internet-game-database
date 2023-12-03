@@ -122,6 +122,22 @@ public class GameService {
         return false;
     }
 
+    public void addOnFocus(Long id) {
+        Game game = this.gameRepository.findById(id).get();
+        game.setOnFocus(true);
+        this.gameRepository.save(game);
+    }
+
+    public void removeFromFocus(Long id) {
+        Game game = this.gameRepository.findById(id).get();
+        game.setOnFocus(false);
+        this.gameRepository.save(game);
+    }
+
+    public boolean isOnFocus(Long id) {
+        return this.gameRepository.findById(id).get().isOnFocus();
+    }
+
     private Manufacture setManufacture(Long id) {
         return this.manufactureRepository.findById(id).get();
     }
