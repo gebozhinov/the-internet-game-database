@@ -285,13 +285,39 @@ SELECT 10, 5
 WHERE NOT EXISTS (SELECT game_id FROM games_platforms WHERE game_id = 10);
 
 
-INSERT INTO reviews(id, created, review, author_id, game_id)
-SELECT 1, TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'It is great game!', 1, 1
-WHERE NOT EXISTS (SELECT author_id FROM reviews WHERE author_id = 1)
-UNION ALL
-SELECT 2, TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'You can play it all day long!', 1, 1
-WHERE NOT EXISTS (SELECT author_id FROM reviews WHERE author_id = 1);
-
 UPDATE games
 SET on_focus = true
-WHERE id IN (2,3,4,5)
+WHERE id IN (2,3,4,5);
+
+INSERT INTO reviews(created, review, author_id, game_id)
+SELECT TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'It is great game!', 1, 1
+WHERE NOT EXISTS (SELECT author_id FROM reviews WHERE author_id = 1)
+UNION ALL
+SELECT TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'You can play it all day long!', 1, 1
+WHERE NOT EXISTS (SELECT author_id FROM reviews WHERE author_id = 1)
+UNION ALL
+SELECT TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'Marvel''s Spider-Man 2 delivers Insomniac''s best tale yet, ' ||
+                                               'and despite its open world falling short, is a reliably fun superhero power trip.',
+    1, 2
+WHERE NOT EXISTS(SELECT author_id FROM reviews WHERE author_id = 1)
+UNION ALL
+SELECT TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'After nearly a year, Sony is finally releasing another game that I''ll play.',
+       1, 2
+WHERE NOT EXISTS(SELECT author_id FROM reviews WHERE author_id = 1)
+UNION ALL
+SELECT TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'Forza Motorsport is brimming with new features across the board, ' ||
+                                            'from its muscular new multiplayer to its much-improved handling,' ||
+                                            ' but its new RPG-inspired upgrade system feels like a step down.',
+       1, 3
+WHERE NOT EXISTS(SELECT author_id FROM reviews WHERE author_id = 1)
+UNION ALL
+SELECT TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'Assassin’s Creed Mirage''s back-to-basics approach is a successful ' ||
+                                            'first step in returning to the stealthy style that launched this series.',
+       1, 4
+WHERE NOT EXISTS(SELECT author_id FROM reviews WHERE author_id = 1)
+UNION ALL
+SELECT TO_DATE('2023-11-02', 'YYYY-MM-DD'), 'Cyberpunk 2077: Phantom Liberty completes an immense turnaround for CD Projekt Red''s' ||
+                                            ' future RPG kickstarted with the anime spinoff, Cyberpunk:' ||
+                                            ' Edgerunners and its latest 2.0 Update.',
+       1, 5
+WHERE NOT EXISTS(SELECT author_id FROM reviews WHERE author_id = 1);

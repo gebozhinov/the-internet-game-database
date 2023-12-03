@@ -1,18 +1,12 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.dto.AddGameDTO;
-import bg.softuni.theinternetgamedatabase.model.dto.GameDTO;
-import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
-import bg.softuni.theinternetgamedatabase.model.dto.PlatformDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.*;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
-import bg.softuni.theinternetgamedatabase.service.GameService;
-import bg.softuni.theinternetgamedatabase.service.ManufactureService;
-import bg.softuni.theinternetgamedatabase.service.PlatformService;
-import bg.softuni.theinternetgamedatabase.service.UserService;
+import bg.softuni.theinternetgamedatabase.service.*;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,14 +24,17 @@ public class GameController {
     private final GameService gameService;
     private final UserService userService;
     private final ManufactureService manufactureService;
+    private final ReviewService reviewService;
     private final PlatformService platformService;
     public GameController(GameService gameService,
                           UserService userService,
                           ManufactureService manufactureService,
+                          ReviewService reviewService,
                           PlatformService platformService) {
         this.gameService = gameService;
         this.userService = userService;
         this.manufactureService = manufactureService;
+        this.reviewService = reviewService;
         this.platformService = platformService;
     }
 
@@ -56,6 +53,9 @@ public class GameController {
         model.addAttribute("isInFavorites", inFavorites);
         boolean isOnFocus = this.gameService.isOnFocus(id);
         model.addAttribute("isOnFocus", isOnFocus);
+
+        List<ReviewDTO> reviews = this.reviewService.findAllByGameId(id);
+        model.addAttribute("reviews", reviews);
 
         return "game-details";
     }
