@@ -5,6 +5,7 @@ import bg.softuni.theinternetgamedatabase.model.dto.GameDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.model.entity.Manufacture;
 import bg.softuni.theinternetgamedatabase.model.entity.Platform;
+import bg.softuni.theinternetgamedatabase.model.entity.User;
 import bg.softuni.theinternetgamedatabase.model.enums.GameGenre;
 import bg.softuni.theinternetgamedatabase.model.mapper.GameMapper;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
@@ -13,31 +14,32 @@ import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
 import bg.softuni.theinternetgamedatabase.repository.GameRepository;
 import bg.softuni.theinternetgamedatabase.repository.ManufactureRepository;
 import bg.softuni.theinternetgamedatabase.repository.PlatformRepository;
+import bg.softuni.theinternetgamedatabase.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class GameService {
 
 
     private final GameRepository gameRepository;
+    private final UserRepository userRepository;
     private final ManufactureRepository manufactureRepository;
     private final PlatformRepository platformRepository;
     private final ImageCloudService imageCloudService;
     private final GameMapper gameMapper;
 
     public GameService(GameRepository gameRepository,
+                       UserRepository userRepository,
                        ManufactureRepository manufactureRepository,
                        PlatformRepository platformRepository,
                        ImageCloudService imageCloudService,
                        GameMapper gameMapper) {
         this.gameRepository = gameRepository;
+        this.userRepository = userRepository;
         this.manufactureRepository = manufactureRepository;
         this.platformRepository = platformRepository;
         this.imageCloudService = imageCloudService;
@@ -73,6 +75,51 @@ public class GameService {
 
        return this.gameRepository.save(game);
 
+    }
+
+    public void addToFavorites(Principal principal, Long id) {
+
+        Game game = this.gameRepository.findById(id).get();
+
+        User user = this.userRepository.findByUsername(principal.getName()).get();
+        if (user.getFavoriteGames().isEmpty()) {
+            user.setFavoriteGames(new HashSet<>());
+        }
+
+        if (game.getUserFavorites().isEmpty()) {
+            game.setUserFavorites(new HashSet<>());
+        }
+
+        user.getFavoriteGames().add(game);
+        game.getUserFavorites().add(user);
+
+        this.userRepository.save(user);
+        this.gameRepository.save(game);
+
+    }
+
+    @Transactional
+    public void removeFromFavorites(Principal principal, Long id) {
+        Game game = this.gameRepository.findById(id).get();
+        User user = this.userRepository.findByUsername(principal.getName()).get();
+
+        user.getFavoriteGames().remove(game);
+        game.getUserFavorites().remove(user);
+
+        this.userRepository.save(user);
+        this.gameRepository.save(game);
+    }
+    public boolean isInFavorites(Long id, Principal principal) {
+        Game game = this.gameRepository.findById(id).get();
+        User user = this.userRepository.findByUsername(principal.getName()).get();
+
+        for (Game favoriteGame : user.getFavoriteGames()) {
+            if (Objects.equals(favoriteGame.getId(), game.getId())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private Manufacture setManufacture(Long id) {

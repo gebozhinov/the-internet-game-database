@@ -9,14 +9,25 @@
 
 <section class="game-detail-section">
     <div class="content"
-            th:method="post"
-            th:action="@{/game/*{id}}"
+
+
             th:object="${gameDTO}">
         <div class="info">
             <h3 class="game-title" th:text="*{title}"></h3>
             <p th:text="*{description}"></p>
             <button class="btn">Gallery</button>
-            <button class="btn" id="add-to-favorites">Add to favorites</button>
+            <form th:method="post"
+                  th:action="@{/game/{id}/add-to-favorites(id = ${gameDTO.id})}">
+            <button class="btn" th:if="${isInFavorites == false}" >Add to Favorites</button>
+            </form>
+            <form th:method="post"
+                  th:action="@{/game/{id}/remove-from-favorites(id = ${gameDTO.id})}">
+                <button class="btn" th:if="${isInFavorites == true}" >Remove from Favorites</button>
+            </form>
+            <form th:method="post"
+                  th:action="@{/game/{id}/add-on-focus(id = ${gameDTO.id})}">
+                <button class="btn" >Add on Focus</button>
+            </form>
         </div>
         <div class="game-detail-swiper">
             <div class="swiper-wrapper">

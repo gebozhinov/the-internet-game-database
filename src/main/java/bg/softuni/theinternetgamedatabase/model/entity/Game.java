@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -42,7 +43,7 @@ public class Game {
     private boolean onFocus;
     @OneToMany(targetEntity = Review.class, mappedBy = "game")
     private Set<Review> reviews;
-    @ManyToMany(targetEntity = User.class, mappedBy = "favoriteGames")
+    @ManyToMany(targetEntity = User.class, mappedBy = "favoriteGames", fetch = FetchType.EAGER)
     private Set<User> userFavorites;
     public String getTitle() {
         return title;

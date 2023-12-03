@@ -48,12 +48,37 @@ public class GameController {
     }
 
     @GetMapping("/{id}")
-    public String getGameDetails(@PathVariable("id") Long id, Model model) {
+    public String getGameDetails(@PathVariable("id") Long id, Principal principal, Model model) {
 
         GameDTO gameDTO = this.gameService.findGameById(id);
         model.addAttribute("gameDTO", gameDTO);
+        boolean inFavorites = this.gameService.isInFavorites(id, principal);
+        model.addAttribute("isInFavorites", inFavorites);
 
         return "game-details";
+    }
+
+    @PostMapping("/{id}/add-to-favorites")
+    public String addToFavorites(@PathVariable("id") Long id, Principal principal, Model model) {
+
+        this.gameService.addToFavorites(principal, id);
+
+       return this.getGameDetails(id, principal, model);
+
+    }
+    @PostMapping("/{id}/remove-from-favorites")
+    public String removeFromFavorites(@PathVariable("id") Long id, Principal principal, Model model) {
+
+        this.gameService.removeFromFavorites(principal, id);
+
+        return this.getGameDetails(id, principal, model);
+
+    }
+    @PostMapping("/{id}/add-on-focus")
+    public String addOnFocus(@PathVariable("id") Long id, Principal principal, Model model) {
+
+        return this.getGameDetails(id, principal, model);
+
     }
 
     @GetMapping("/all")
