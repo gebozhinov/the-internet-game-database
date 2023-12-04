@@ -93,10 +93,21 @@
                     &#10077;
                 </div>
             </div>
-            <div class="t-bq-quote-jasper-base">
+         <form class="t-bq-quote-jasper-base"
+                    th:method="post"
+                    th:action="@{/game/{id}/add-review(id = ${gameDTO.id})}">
+            <textarea
+                    aria-label="Review"
+                    type="text"
+                    rows="10"
+                    cols="50"
+                    id="review"
+                    name="review"
+                    placeholder="Review..."></textarea>
 
+                <input type="submit" class="add-review-button" value="Post" >
 
-            </div>
+         </form>
         </div>
     </div>
 </section>
