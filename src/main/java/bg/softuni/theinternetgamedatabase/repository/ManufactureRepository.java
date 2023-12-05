@@ -16,4 +16,8 @@ public interface ManufactureRepository extends JpaRepository<Manufacture, Long> 
             "FROM Manufacture m " +
             "ORDER BY m.companyName")
     Optional<List<ManufactureDTO>> getManufacturesData();
+
+    @Query(value = "SELECT * FROM manufactures " +
+            "WHERE company_name = :name ", nativeQuery = true)
+    Optional<Manufacture> findByManufactureName(String name);
 }

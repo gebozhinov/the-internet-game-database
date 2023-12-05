@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<th:block th:insert="~{/fragments/head}"/>
+<body class="home-index">
+<th:block th:insert="~{/fragments/header}"/>
+<ul class="circles">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<div class="centering-company-add">
+  <form class="add-game-form"
+        th:method="post"
+        th:action="@{/manufacture/add}"
+        th:object="${addManufactureDTO}">
+    <div class="add-game-row">
+      <img
+              class="add-game-new"
+              src="/images/logo.png"
+              alt="Login"
+      >
+      <h1>Add Company!</h1>
+      <div class="text-field">
+        <label for="title">Company name:</label>
+        <input
+                th:field="*{companyName}"
+                th:errorclass="is-invalid"
+                aria-label="Title"
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Company name"
+        >
+
+      </div>
+      <small class="incorrect-data text-danger border-danger"
+             th:each="err : ${#fields.errors('companyName')}"
+             th:text="${err}"
+      ></small>
+    </div>
+    <input type="submit" class="add-game-button" value="Add" >
+    <div class="add-game-action">
+    </div>
+  </form>
+</div>
+
+<th:block th:insert="~{/fragments/footer}"/>
+</body>
+</html>

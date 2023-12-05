@@ -20,35 +20,35 @@ SELECT 1, 3
 WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 1);
 
 
-INSERT INTO manufactures(id, company_name)
-SELECT 1, 'Rockstar'
+INSERT INTO manufactures(company_name)
+SELECT 'Rockstar'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 1)
 UNION ALL
-SELECT 2, 'Insomniac Games'
+SELECT 'Insomniac Games'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 2)
 UNION ALL
-SELECT 3, 'Turn 10 Studios'
+SELECT 'Turn 10 Studios'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 3)
 UNION ALL
-SELECT 4, 'Ubisoft Bordeaux'
+SELECT 'Ubisoft Bordeaux'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 4)
 UNION ALL
-SELECT 5, 'CD Projekt RED'
+SELECT 'CD Projekt RED'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 5)
 UNION ALL
-SELECT 6, 'GSC Game World'
+SELECT 'GSC Game World'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 6)
 UNION ALL
-SELECT 7, 'Rocksteady Studios'
+SELECT 'Rocksteady Studios'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 7)
 UNION ALL
-SELECT 8, 'Massive Entertainment'
+SELECT 'Massive Entertainment'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 8)
 UNION ALL
-SELECT 9, 'Square Enix'
+SELECT 'Square Enix'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 9)
 UNION ALL
-SELECT 10, 'Bandai Namco Studios'
+SELECT 'Bandai Namco Studios'
 WHERE NOT EXISTS(SELECT id FROM manufactures WHERE id = 9);
 
 
