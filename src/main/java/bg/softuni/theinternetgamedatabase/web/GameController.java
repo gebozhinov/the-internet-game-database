@@ -61,35 +61,35 @@ public class GameController {
     }
 
     @PostMapping("/{id}/add-to-favorites")
-    public String addToFavorites(@PathVariable("id") Long id, Principal principal, Model model) {
+    public String addToFavorites(@PathVariable("id") Long id, Principal principal) {
 
         this.gameService.addToFavorites(principal, id);
 
-       return this.getGameDetails(id, principal, model);
+       return "redirect:/game/" + id;
 
     }
     @PostMapping("/{id}/remove-from-favorites")
-    public String removeFromFavorites(@PathVariable("id") Long id, Principal principal, Model model) {
+    public String removeFromFavorites(@PathVariable("id") Long id, Principal principal) {
 
         this.gameService.removeFromFavorites(principal, id);
 
-        return this.getGameDetails(id, principal, model);
+        return "redirect:/game/" + id;
 
     }
     @PostMapping("/{id}/add-on-focus")
-    public String addOnFocus(@PathVariable("id") Long id, Principal principal, Model model) {
+    public String addOnFocus(@PathVariable("id") Long id) {
 
         this.gameService.addOnFocus(id);
 
-        return this.getGameDetails(id, principal, model);
+        return "redirect:/game/" + id;
 
     }
     @PostMapping("/{id}/remove-from-focus")
-    public String removeFromFocus(@PathVariable("id") Long id, Principal principal, Model model) {
+    public String removeFromFocus(@PathVariable("id") Long id) {
 
         this.gameService.removeFromFocus(id);
 
-        return this.getGameDetails(id, principal, model);
+        return "redirect:/game/" + id;
 
     }
 

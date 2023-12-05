@@ -41,7 +41,7 @@ public class Game {
     private BigDecimal rating;
     @Column(name = "on_focus", columnDefinition = "boolean default false")
     private boolean onFocus;
-    @OneToMany(targetEntity = Review.class, mappedBy = "game")
+    @OneToMany(targetEntity = Review.class, mappedBy = "game", fetch = FetchType.EAGER)
     private Set<Review> reviews;
     @ManyToMany(targetEntity = User.class, mappedBy = "favoriteGames", fetch = FetchType.EAGER)
     private Set<User> userFavorites;

@@ -37,7 +37,7 @@ public class ReviewService {
       return   this.reviewRepository.findAllByGameId(id).orElse(new ArrayList<>());
     }
 
-    public Review addReview(Long id, String username, ReviewDTO reviewDTO) {
+    public void addReview(Long id, String username, ReviewDTO reviewDTO) {
 
         Game game = this.gameRepository.findById(id).get();
         User user = this.userRepository.findByUsername(username).get();
@@ -50,6 +50,17 @@ public class ReviewService {
         this.gameRepository.save(game);
         this.userRepository.save(user);
 
-        return review;
+    }
+
+    public void deleteReview(Long gameId, Long reviewId, String username) {
+
+        Game game = this.gameRepository.findById(gameId).get();
+        Review review = this.reviewRepository.findById(reviewId).get();
+        User user = this.userRepository.findByUsername(username).get();
+
+        game.getReviews().remove(review);
+        user.getReviews().remove(review);
+        this.reviewRepository.delete(review);
+
     }
 }

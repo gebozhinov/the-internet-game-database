@@ -1412,3 +1412,17 @@ section.t-bq-section {
     transition: all .3s ease;
     -webkit-transition: all .3s ease;
 }
+
+.delete-review-button {
+    border: none;
+    margin-top: 40px;
+    font-size: 18px;
+    letter-spacing: .025em;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 800;
+    min-height: 50px;
+    width: 40%;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.15);
+}

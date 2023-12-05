@@ -22,8 +22,16 @@ public class ReviewController {
     public String add(@PathVariable Long id, Principal principal, ReviewDTO reviewDTO) {
 
 
-        Review review = this.reviewService.addReview(id, principal.getName(), reviewDTO);
+        this.reviewService.addReview(id, principal.getName(), reviewDTO);
 
+
+        return "redirect:/game/" + id;
+    }
+
+    @PostMapping("/game/{id}/delete-review/{reviewId}/{reviewAuthor}")
+    public String delete(@PathVariable Long id, @PathVariable Long reviewId, @PathVariable String reviewAuthor) {
+
+        this.reviewService.deleteReview(id, reviewId, reviewAuthor);
 
         return "redirect:/game/" + id;
     }

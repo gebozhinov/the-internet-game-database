@@ -71,7 +71,7 @@
             <div class="t-bq-quote-paul-pattern">
             </div>
             <div class="t-bq-quote-paul-base">
-                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers" th:text="*{review.review}">
+                <blockquote class="t-bq-quote-paul-text" th:text="*{review.review}">
 
                 </blockquote>
                 <div class="t-bq-quote-paul-meta">
@@ -80,6 +80,14 @@
                         <div class="t-bq-quote-paul-source"><span th:text="*{review.created}"></span></div>
                     </div>
                 </div>
+                <form class="t-bq-quote-jasper-base" sec:authorize="hasAuthority('ADMIN')"
+                      th:method="post"
+                      th:action="@{/game/{id}/delete-review/{reviewId}/{reviewAuthor}(id = ${gameDTO.id}, reviewId = ${review.id}, reviewAuthor = ${review.authorUsername})}">
+
+
+                    <input type="submit" class="delete-review-button" value="Delete" >
+
+                </form>
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ public class User   {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Set<Game> favoriteGames;
-    @OneToMany(targetEntity = Review.class, mappedBy = "author")
+    @OneToMany(targetEntity = Review.class, mappedBy = "author", fetch = FetchType.EAGER)
     private Set<Review> reviews;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
