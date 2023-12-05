@@ -1,5 +1,7 @@
 package bg.softuni.theinternetgamedatabase.service;
 
+import bg.softuni.theinternetgamedatabase.model.dto.EditUserDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.UserDTO;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.dto.RegisterUserDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
@@ -47,5 +49,14 @@ public class UserService {
 
     public Long findIdByUsername(String username) {
       return this.userRepository.findByUsername(username).get().getId();
+    }
+
+    public List<UserDTO> findAllUsernames() {
+        return this.userRepository.findAllUsernames().orElse(new ArrayList<>());
+    }
+    public EditUserDTO findById(Long id) {
+        User user = this.userRepository.findById(id).get();
+
+       return this.userMapper.userToEditUserDto(user);
     }
 }

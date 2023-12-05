@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.repository;
 
+import bg.softuni.theinternetgamedatabase.model.dto.UserDTO;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,4 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "JOIN games g on fg.game_id = g.id " +
             "WHERE u.id = :id ",nativeQuery = true)
     Optional<List<FavoriteGamesView>> getFavoriteGames(Long id);
+
+    @Query("SELECT NEW bg.softuni.theinternetgamedatabase.model.dto.UserDTO(u.id, u.username) FROM User u")
+    Optional<List<UserDTO>> findAllUsernames();
 }
