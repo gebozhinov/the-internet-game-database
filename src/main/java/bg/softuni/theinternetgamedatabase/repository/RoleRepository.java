@@ -1,7 +1,7 @@
 package bg.softuni.theinternetgamedatabase.repository;
 
 import bg.softuni.theinternetgamedatabase.model.entity.Role;
-import bg.softuni.theinternetgamedatabase.model.view.UserUsernameView;
+import bg.softuni.theinternetgamedatabase.model.view.UsernameUserRoleView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,19 +13,9 @@ import java.util.Optional;
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
 
-    @Query(value = "SELECT u.username FROM users u " +
+    @Query(value = "SELECT u.id, u.username, r.user_role FROM users u " +
             "JOIN users_roles ur on u.id = ur.user_id " +
-            "JOIN roles r on ur.role_id = r.id " +
-            "WHERE r.user_role = 'ADMIN'", nativeQuery = true)
-    Optional<List<UserUsernameView>> findAllUsernamesByUserRoleAdmin();
-    @Query(value = "SELECT u.username FROM users u " +
-            "JOIN users_roles ur on u.id = ur.user_id " +
-            "JOIN roles r on ur.role_id = r.id " +
-            "WHERE r.user_role = 'MODERATOR'", nativeQuery = true)
-    Optional<List<UserUsernameView>> findAllUsernamesByUserRoleModerator();
-    @Query(value = "SELECT u.username FROM users u " +
-            "JOIN users_roles ur on u.id = ur.user_id " +
-            "JOIN roles r on ur.role_id = r.id " +
-            "WHERE r.user_role = 'USER'", nativeQuery = true)
-    Optional<List<UserUsernameView>> findAllUsernamesByUserRoleUser();
+            "JOIN roles r on ur.role_id = r.id", nativeQuery = true)
+    Optional<List<UsernameUserRoleView>> findAllUsernamesUserRoles();
+
 }

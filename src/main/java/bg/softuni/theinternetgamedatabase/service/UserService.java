@@ -1,6 +1,9 @@
 package bg.softuni.theinternetgamedatabase.service;
 
 
+import bg.softuni.theinternetgamedatabase.model.dto.user.UsernameDTO;
+import bg.softuni.theinternetgamedatabase.model.entity.Role;
+import bg.softuni.theinternetgamedatabase.model.enums.UserRole;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.dto.user.RegisterUserDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
@@ -50,4 +53,14 @@ public class UserService {
       return this.userRepository.findByUsername(username).get().getId();
     }
 
+
+    public void addAdminRole(UsernameDTO UsernameDTO) {
+
+        for (String username : UsernameDTO.getUsername()) {
+            User user = this.userRepository.findByUsername(username).get();
+            Role role = this.roleRepository.findById(3L).get();
+            user.getRoles().add(role);
+            this.userRepository.save(user);
+        }
+    }
 }

@@ -16,151 +16,42 @@
   <li></li>
   <li></li>
 </ul>
-<div class="centering">
-  <form class="add-game-form"
-        th:method="post"
-        th:action="@{/game/add}" enctype="multipart/form-data"
-        th:object="${addGameDTO}">
+<div class="centering" >
+  <div class="add-game-form"
+        >
     <div class="add-game-row">
       <img
               class="add-game-new"
               src="/images/logo.png"
               alt="Login"
       >
-      <h1>Add Game!</h1>
+      <h1>Edit Roles!</h1>
     </div>
 
-    <div class="text-field">
-      <label for="title">Game title:</label>
-      <input
-              th:field="*{title}"
-              th:errorclass="is-invalid"
-              aria-label="Title"
-              type="text"
-              id="title"
-              name="title"
-              placeholder="Game title"
-      >
 
-    </div>
-    <small class="incorrect-data text-danger border-danger"
-           th:each="err : ${#fields.errors('title')}"
-           th:text="${err}"
-    ></small>
-    <div class="text-field">
-      <label for="imgUrl">Game cover:</label>
-      <input
-              th:field="*{image}"
-              th:errorclass="is-invalid"
-              aria-label="imgUrl"
-              type="file"
-              id="imgUrl"
-              name="imgUrl"
-              placeholder="Game cover"
-      >
-    </div>
-    <div class="text-field">
-      <label for="manufactureId">Company:</label>
-      <select
-              th:field="*{manufactureId}"
-              th:errorclass="is-invalid"
-              id="manufactureId"
-              name="manufactureId"
-              class="custom-select"
-              aria-describedby="categoryHelpInline">
-        <option value="-1" selected>Select company</option>
-        <option th:each="manufactor : ${manufacturesData}"
-                th:value="${manufactor.id}" th:text="${manufactor.companyName}"></option>
-      </select>
-
-    </div>
-    <small  class="incorrect-data text-danger border-danger"
-            th:each="err : ${#fields.errors('manufactureId')}"
-            th:text="${err}"
-    ></small>
-
-    <div class="text-field">
-      <label for="genre">Genre:</label>
+    <form th:method="post"
+          th:action="@{/roles/edit/admin}">
+      <label for="username" >Admin:</label>
       <select multiple th:class="chosen-select"
-              th:field="*{genre}"
-              th:errorclass="is-invalid"
-              id="genre"
-              name="genre"
+
+              id="username"
+              name="username"
               aria-describedby="categoryHelpInline">
-        <option th:each="genre : ${T(bg.softuni.theinternetgamedatabase.model.enums.GameGenre).values()}"
-                th:value="${genre.name()}" th:text="${genre.name()}"></option>
+        <option selected th:each="user : ${usernameUserRoleViews.entrySet()}"
+               th:if="${user.value == 'ADMIN'}" th:value="${user.key}" th:text="${user.key}">
+        </option>
+        <option th:each="user : ${usernameUserRoleViews.entrySet()}"
+                th:if="${user.value != 'ADMIN'}" th:value="${user.key}" th:text="${user.key}">
+        </option>
       </select>
 
-    </div>
-    <small  class="incorrect-data text-danger border-danger"
-            th:each="err : ${#fields.errors('genre')}"
-            th:text="${err}"
-    ></small>
-    <div class="text-field">
-      <label for="platformId">Platform:</label>
-      <select multiple th:class="chosen-select"
-              th:field="*{platformId}"
-              th:errorclass="is-invalid"
-              id="platformId"
-              name="platformId"
-              aria-describedby="categoryHelpInline">
-        <option th:each="platform : ${platformData}"
-                th:value="${platform.id}" th:text="${platform.name}"></option>
-      </select>
+      <input type="submit" class="add-game-button" value="Edit" >
+      <div class="add-game-action">
+      </div>
+    </form>
 
-    </div>
-    <small  class="incorrect-data text-danger border-danger"
-            th:each="err : ${#fields.errors('platformId')}"
-            th:text="${err}"
-    ></small>
 
-    <div class="text-field">
-      <label for="releaseDate">Release Date:</label>
-      <input
-              th:field="*{releaseDate}"
-              aria-label="releaseDate"
-              type="date"
-              id="releaseDate"
-              name="releaseDate"
-              placeholder="Release date"
-      >
-    </div>
-
-    <div class="text-field">
-      <label for="description"></label>
-      <textarea
-              th:field="*{description}"
-              aria-label="Description"
-              type="text"
-              rows="5"
-              cols="50"
-              id="description"
-              name="description"
-              placeholder="Description..."></textarea>
-    </div>
-
-    <div class="text-field">
-      <label for="rating">Game rating:</label>
-      <input
-              th:field="*{rating}"
-              th:errorclass="is-invalid"
-              aria-label="Rating"
-              type="text"
-              id="rating"
-              name="rating"
-              placeholder="Rating"
-      >
-
-    </div>
-    <small class="incorrect-data text-danger border-danger"
-           th:each="err : ${#fields.errors('rating')}"
-           th:text="${err}"
-    ></small>
-    <input type="submit" class="add-game-button" value="Add" >
-    <div class="add-game-action">
-    </div>
-
-  </form>
+  </div>
 </div>
 
 <th:block th:insert="~{/fragments/footer}"/>

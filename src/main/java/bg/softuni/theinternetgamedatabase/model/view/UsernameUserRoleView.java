@@ -1,6 +1,8 @@
 package bg.softuni.theinternetgamedatabase.model.view;
 
-public interface UserUsernameView {
+public interface UsernameUserRoleView {
 
+    Long getId();
     String getUsername();
+    String getUser_Role();
 }
