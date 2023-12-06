@@ -1,6 +1,5 @@
 package bg.softuni.theinternetgamedatabase;
 
-import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.repository.GameRepository;
 import bg.softuni.theinternetgamedatabase.repository.ManufactureRepository;
@@ -8,8 +7,6 @@ import bg.softuni.theinternetgamedatabase.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class Main implements CommandLineRunner {

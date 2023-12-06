@@ -1,4 +1,4 @@
-package bg.softuni.theinternetgamedatabase.model.dto;
+package bg.softuni.theinternetgamedatabase.model.dto.game;
 
 import bg.softuni.theinternetgamedatabase.model.validation.UniqueData;
 import jakarta.validation.constraints.*;

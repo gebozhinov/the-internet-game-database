@@ -1433,10 +1433,3 @@ section.t-bq-section {
     height: 70%;
     width: 100%;
 }
-.centering-user-edit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 120%;
-    width: 100%;
-}

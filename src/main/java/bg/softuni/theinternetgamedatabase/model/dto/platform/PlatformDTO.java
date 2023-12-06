@@ -1,4 +1,4 @@
-package bg.softuni.theinternetgamedatabase.model.dto;
+package bg.softuni.theinternetgamedatabase.model.dto.platform;
 
 public class PlatformDTO {
 

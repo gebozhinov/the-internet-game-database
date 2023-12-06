@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.service;
 
-import bg.softuni.theinternetgamedatabase.model.dto.ReviewDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.review.ReviewDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.model.entity.Review;
 import bg.softuni.theinternetgamedatabase.model.entity.User;

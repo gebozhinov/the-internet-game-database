@@ -1,7 +1,7 @@
 package bg.softuni.theinternetgamedatabase.service;
 
-import bg.softuni.theinternetgamedatabase.model.dto.AddManufactureDTO;
-import bg.softuni.theinternetgamedatabase.model.dto.ManufactureDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.manufacture.AddManufactureDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.manufacture.ManufactureDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Manufacture;
 import bg.softuni.theinternetgamedatabase.model.mapper.ManufactureMapper;
 import bg.softuni.theinternetgamedatabase.repository.ManufactureRepository;

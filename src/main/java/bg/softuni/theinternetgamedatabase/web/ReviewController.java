@@ -1,7 +1,6 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.dto.ReviewDTO;
-import bg.softuni.theinternetgamedatabase.model.entity.Review;
+import bg.softuni.theinternetgamedatabase.model.dto.review.ReviewDTO;
 import bg.softuni.theinternetgamedatabase.service.ReviewService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

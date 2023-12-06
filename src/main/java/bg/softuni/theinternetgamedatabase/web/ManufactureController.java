@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.dto.AddManufactureDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.manufacture.AddManufactureDTO;
 import bg.softuni.theinternetgamedatabase.service.ManufactureService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;

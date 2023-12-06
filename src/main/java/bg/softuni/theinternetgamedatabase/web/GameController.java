@@ -1,6 +1,10 @@
 package bg.softuni.theinternetgamedatabase.web;
 
-import bg.softuni.theinternetgamedatabase.model.dto.*;
+import bg.softuni.theinternetgamedatabase.model.dto.game.AddGameDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.game.GameDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.manufacture.ManufactureDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.platform.PlatformDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.review.ReviewDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;

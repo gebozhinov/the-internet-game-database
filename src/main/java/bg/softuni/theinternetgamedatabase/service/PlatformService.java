@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.service;
 
-import bg.softuni.theinternetgamedatabase.model.dto.PlatformDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.platform.PlatformDTO;
 import bg.softuni.theinternetgamedatabase.repository.PlatformRepository;
 import org.springframework.stereotype.Service;
 

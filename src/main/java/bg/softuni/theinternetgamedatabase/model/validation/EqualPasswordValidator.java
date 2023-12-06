@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.model.validation;
 
-import bg.softuni.theinternetgamedatabase.model.dto.RegisterUserDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.user.RegisterUserDTO;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

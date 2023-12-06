@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.model.mapper;
 
-import bg.softuni.theinternetgamedatabase.model.dto.AddGameDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.game.AddGameDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

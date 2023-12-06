@@ -1,6 +1,6 @@
 package bg.softuni.theinternetgamedatabase.repository;
 
-import bg.softuni.theinternetgamedatabase.model.dto.GameDTO;
+import bg.softuni.theinternetgamedatabase.model.dto.game.GameDTO;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
@@ -36,7 +36,7 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "WHERE title = :title",nativeQuery = true)
     Optional<Game> findByTitle(String title);
 
-    @Query("SELECT NEW bg.softuni.theinternetgamedatabase.model.dto.GameDTO(g.id, g.title, g.description, g.imgUrl, g.rating) " +
+    @Query("SELECT NEW bg.softuni.theinternetgamedatabase.model.dto.game.GameDTO(g.id, g.title, g.description, g.imgUrl, g.rating) " +
             "FROM Game g " +
             "WHERE g.id = :id")
     Optional<GameDTO> findGameById(Long id);

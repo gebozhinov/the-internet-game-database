@@ -1,4 +1,4 @@
-package bg.softuni.theinternetgamedatabase.model.dto;
+package bg.softuni.theinternetgamedatabase.model.dto.user;
 
 import bg.softuni.theinternetgamedatabase.model.validation.EqualPassword;
 import bg.softuni.theinternetgamedatabase.model.validation.UniqueData;
