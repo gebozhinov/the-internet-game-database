@@ -28,7 +28,7 @@ public class Config {
                    // everyone can download static resources (css, js, images)
                    .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                    .requestMatchers("/login", "/register").anonymous()
-                   .requestMatchers("/game/add").hasAuthority("ADMIN")
+                   .requestMatchers("/game/add", "/manufacture/add", "/roles/edit").hasAuthority("ADMIN")
                    .anyRequest().authenticated())
            .formLogin(login -> login
                    .loginPage("/login")
@@ -41,6 +41,7 @@ public class Config {
                    .logoutSuccessUrl("/login")
                    .deleteCookies("JSESSIONID")
                    .clearAuthentication(true))
+           .csrf(AbstractHttpConfigurer::disable)
            .build();
     }
 }

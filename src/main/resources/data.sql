@@ -5,9 +5,11 @@ VALUES ('USER'),
 ON CONFLICT (user_role) DO NOTHING;
 
 INSERT INTO users(age, email, password, username)
-VALUES (33, 'admin@admin.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'admin')
-ON CONFLICT (username) DO NOTHING;
-
+SELECT 33, 'admin@admin.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'admin'
+WHERE NOT EXISTS (SELECT id FROM users WHERE id = 1)
+UNION ALL
+SELECT 33, 'user@user.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'user'
+WHERE NOT EXISTS (SELECT id FROM users WHERE id = 2);
 
 INSERT INTO users_roles(user_id, role_id)
 SELECT 1, 1
@@ -17,7 +19,10 @@ SELECT 1, 2
 WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 1)
 UNION ALL
 SELECT 1, 3
-WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 1);
+WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 1)
+UNION ALL
+SELECT 2, 1
+WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 2);
 
 
 INSERT INTO manufactures(company_name)
