@@ -37,6 +37,9 @@ public class RoleController {
     @PostMapping("/edit/admin")
     public String edit(UsernameDTO usernameDTO) {
 
+        if (usernameDTO.getUsername() == null) {
+            return "redirect:/roles/edit";
+        }
         this.userService.addAdminRole(usernameDTO);
 
         return "redirect:/roles/edit";
