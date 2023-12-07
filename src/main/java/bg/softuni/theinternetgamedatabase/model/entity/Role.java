@@ -3,6 +3,8 @@ package bg.softuni.theinternetgamedatabase.model.entity;
 import bg.softuni.theinternetgamedatabase.model.enums.UserRole;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -25,5 +27,17 @@ public class Role {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Role role)) return false;
+        return Objects.equals(getId(), role.getId()) && getUserRole() == role.getUserRole();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getUserRole());
     }
 }

@@ -17,5 +17,10 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
             "JOIN users_roles ur on u.id = ur.user_id " +
             "JOIN roles r on ur.role_id = r.id", nativeQuery = true)
     Optional<List<UsernameUserRoleView>> findAllUsernamesUserRoles();
+    @Query(value = "SELECT u.id, u.username, r.user_role FROM users u " +
+            "JOIN users_roles ur on u.id = ur.user_id " +
+            "JOIN roles r on ur.role_id = r.id " +
+            "WHERE r.user_role = 'ADMIN'", nativeQuery = true)
+    Optional<List<UsernameUserRoleView>> findAllUsernamesWithAdminUserRole();
 
 }

@@ -8,6 +8,7 @@ import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
 import bg.softuni.theinternetgamedatabase.model.dto.user.RegisterUserDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import bg.softuni.theinternetgamedatabase.model.mapper.UserMapper;
+import bg.softuni.theinternetgamedatabase.model.view.UsernameUserRoleView;
 import bg.softuni.theinternetgamedatabase.repository.RoleRepository;
 import bg.softuni.theinternetgamedatabase.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,13 +55,28 @@ public class UserService {
     }
 
 
-    public void addAdminRole(UsernameDTO UsernameDTO) {
+    public void addAdminRole(UsernameDTO usernameDTO) {
 
-        for (String username : UsernameDTO.getUsername()) {
+        removeAdminRole();
+
+        Role role = this.roleRepository.findById(3L).get();
+        for (String username : usernameDTO.getUsername()) {
             User user = this.userRepository.findByUsername(username).get();
-            Role role = this.roleRepository.findById(3L).get();
             user.getRoles().add(role);
             this.userRepository.save(user);
         }
+    }
+
+    private void removeAdminRole() {
+        List<UsernameUserRoleView> currentAdminUsers = this.roleRepository.findAllUsernamesWithAdminUserRole().get();
+        Role adminRole = this.roleRepository.findById(3L).get();
+
+        for (UsernameUserRoleView currentAdminUser : currentAdminUsers) {
+            User user = this.userRepository.findByUsername(currentAdminUser.getUsername()).get();
+            user.getRoles().remove(adminRole);
+            this.userRepository.save(user);
+        }
+
+
     }
 }
