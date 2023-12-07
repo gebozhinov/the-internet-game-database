@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.service;
 
+import bg.softuni.theinternetgamedatabase.model.dto.game.AddArtworkDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.game.AddGameDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.game.GameDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
@@ -11,10 +12,7 @@ import bg.softuni.theinternetgamedatabase.model.mapper.GameMapper;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
-import bg.softuni.theinternetgamedatabase.repository.GameRepository;
-import bg.softuni.theinternetgamedatabase.repository.ManufactureRepository;
-import bg.softuni.theinternetgamedatabase.repository.PlatformRepository;
-import bg.softuni.theinternetgamedatabase.repository.UserRepository;
+import bg.softuni.theinternetgamedatabase.repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -75,6 +73,17 @@ public class GameService {
 
        return this.gameRepository.save(game);
 
+    }
+
+    public void addArtwork(AddArtworkDTO addArtworkDTO, Long id, Principal principal) {
+        Game game = this.gameRepository.findById(id).get();
+        if (game.getArtworkUrl().isEmpty()) {
+            game.setArtworkUrl(new ArrayList<>());
+        }
+
+        game.getArtworkUrl().add(this.imageCloudService.saveImage(addArtworkDTO.getArtwork(), principal));
+
+        this.gameRepository.save(game);
     }
 
     public void addToFavorites(Principal principal, Long id) {

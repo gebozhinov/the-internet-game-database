@@ -1,5 +1,6 @@
 package bg.softuni.theinternetgamedatabase.web;
 
+import bg.softuni.theinternetgamedatabase.model.dto.game.AddArtworkDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.game.AddGameDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.game.GameDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.manufacture.ManufactureDTO;
@@ -46,6 +47,10 @@ public class GameController {
     @ModelAttribute("addGameDTO")
     public AddGameDTO addGameDTO() {
         return new AddGameDTO();
+    }
+    @ModelAttribute("addArtwork")
+    public AddArtworkDTO addArtworkDTO() {
+        return new AddArtworkDTO();
     }
 
     @GetMapping("/{id}")
@@ -166,6 +171,23 @@ public class GameController {
         Game game = this.gameService.add(addGameDTO, principal);
 
         return "redirect:/game/" + game.getId();
+    }
+
+    @GetMapping("/gallery/{id}")
+    public String gallery(@PathVariable Long id, Model model) {
+
+        GameDTO gameDTO = this.gameService.findGameById(id);
+        model.addAttribute("gameDTO", gameDTO);
+
+        return "game-gallery";
+    }
+
+    @PostMapping("/gallery/{id}")
+    public String gallery(@PathVariable Long id, AddArtworkDTO addArtworkDTO, Principal principal) {
+
+        this.gameService.addArtwork(addArtworkDTO, id, principal);
+
+        return "redirect:/game/gallery/" + id;
     }
 
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,6 +21,10 @@ public class Game {
     private String title;
     @Column(name = "img_url",nullable = false ,unique = true)
     private String imgUrl;
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "artworks", joinColumns = @JoinColumn(name = "game_id"))
+    @Column(name = "artworks")
+    private List<String> artworkUrl = new ArrayList<>();
     @ManyToOne
     private Manufacture manufacture;
     @ElementCollection(targetClass = GameGenre.class)
@@ -145,6 +151,15 @@ public class Game {
 
     public Game setOnFocus(boolean onFocus) {
         this.onFocus = onFocus;
+        return this;
+    }
+
+    public List<String> getArtworkUrl() {
+        return artworkUrl;
+    }
+
+    public Game setArtworkUrl(List<String> artworkUrl) {
+        this.artworkUrl = artworkUrl;
         return this;
     }
 }

@@ -15,7 +15,10 @@
         <div class="info">
             <h3 class="game-title" th:text="*{title}"></h3>
             <p th:text="*{description}"></p>
-            <button class="btn">Gallery</button>
+            <form th:method="get"
+                  th:action="@{/game/gallery/{id}(id = ${gameDTO.id})}">
+            <button class="btn" th:href="@{/game/gallery/{id}(id = ${gameDTO.id})}">Gallery</button>
+            </form>
             <form th:method="post"
                   th:action="@{/game/{id}/add-to-favorites(id = ${gameDTO.id})}">
             <button class="btn" th:if="${isInFavorites == false}" >Add to Favorites</button>
