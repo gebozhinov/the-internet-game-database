@@ -57,7 +57,6 @@ public class UserService {
 
     public void addAdminRole(UsernameDTO usernameDTO) {
 
-        removeAdminRole();
 
         Role role = this.roleRepository.findById(3L).get();
         for (String username : usernameDTO.getUsername()) {
@@ -67,7 +66,7 @@ public class UserService {
         }
     }
 
-    private void removeAdminRole() {
+    public void removeAdminRole() {
         List<UsernameUserRoleView> currentAdminUsers = this.roleRepository.findAllUsernamesWithAdminUserRole().get();
         Role adminRole = this.roleRepository.findById(3L).get();
 
