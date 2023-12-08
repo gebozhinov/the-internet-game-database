@@ -7,10 +7,7 @@ import bg.softuni.theinternetgamedatabase.model.dto.manufacture.ManufactureDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.platform.PlatformDTO;
 import bg.softuni.theinternetgamedatabase.model.dto.review.ReviewDTO;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
-import bg.softuni.theinternetgamedatabase.model.view.GameView;
-import bg.softuni.theinternetgamedatabase.model.view.FavoriteGamesView;
-import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
-import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
+import bg.softuni.theinternetgamedatabase.model.view.*;
 import bg.softuni.theinternetgamedatabase.service.*;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -178,6 +175,9 @@ public class GameController {
 
         GameDTO gameDTO = this.gameService.findGameById(id);
         model.addAttribute("gameDTO", gameDTO);
+
+        List<ArtworkView> allArtworkByGameId = this.gameService.findAllArtworkByGameId(id);
+        model.addAttribute("allArtworkByGameId", allArtworkByGameId);
 
         return "game-gallery";
     }

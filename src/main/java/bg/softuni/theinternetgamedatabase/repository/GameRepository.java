@@ -1,6 +1,7 @@
 package bg.softuni.theinternetgamedatabase.repository;
 
 import bg.softuni.theinternetgamedatabase.model.dto.game.GameDTO;
+import bg.softuni.theinternetgamedatabase.model.view.ArtworkView;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.entity.Game;
@@ -40,4 +41,9 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "FROM Game g " +
             "WHERE g.id = :id")
     Optional<GameDTO> findGameById(Long id);
+
+    @Query(value = "SELECT a.artwork FROM games g " +
+            "JOIN artwork a on g.id = a.game_id " +
+            "WHERE g.id = :id", nativeQuery = true)
+    Optional<List<ArtworkView>> findAllArtworkByGameId(Long id);
 }

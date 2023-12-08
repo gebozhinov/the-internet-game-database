@@ -22,8 +22,8 @@ public class Game {
     @Column(name = "img_url",nullable = false ,unique = true)
     private String imgUrl;
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "artworks", joinColumns = @JoinColumn(name = "game_id"))
-    @Column(name = "artworks")
+    @CollectionTable(name = "artwork", joinColumns = @JoinColumn(name = "game_id"))
+    @Column(name = "artwork")
     private List<String> artworkUrl = new ArrayList<>();
     @ManyToOne
     private Manufacture manufacture;

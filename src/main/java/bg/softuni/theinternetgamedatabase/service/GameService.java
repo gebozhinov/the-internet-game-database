@@ -9,6 +9,7 @@ import bg.softuni.theinternetgamedatabase.model.entity.Platform;
 import bg.softuni.theinternetgamedatabase.model.entity.User;
 import bg.softuni.theinternetgamedatabase.model.enums.GameGenre;
 import bg.softuni.theinternetgamedatabase.model.mapper.GameMapper;
+import bg.softuni.theinternetgamedatabase.model.view.ArtworkView;
 import bg.softuni.theinternetgamedatabase.model.view.GameView;
 import bg.softuni.theinternetgamedatabase.model.view.TopRatedGamesView;
 import bg.softuni.theinternetgamedatabase.model.view.UpcomingGamesView;
@@ -147,6 +148,9 @@ public class GameService {
         return this.gameRepository.findById(id).get().isOnFocus();
     }
 
+    public List<ArtworkView> findAllArtworkByGameId(Long id) {
+      return this.gameRepository.findAllArtworkByGameId(id).orElse(new ArrayList<>());
+    }
     private Manufacture setManufacture(Long id) {
         return this.manufactureRepository.findById(id).get();
     }

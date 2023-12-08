@@ -18,7 +18,7 @@
   <li></li>
 </ul>
 
-<div class="centering-company-add">
+<div class="centering-company-add"  sec:authorize="hasAuthority('ADMIN')">
   <form class="add-game-form"
         th:method="post"
         th:action="@{/game/gallery/{id}(id = ${gameDTO.id})}" enctype="multipart/form-data"
@@ -49,6 +49,25 @@
     </div>
   </form>
 </div>
+<section class="section"
+    th:object="${allArtworkByGameId}">
+  <h1>Artwork!</h1>
+  <div class="grid"
+    th:if="${allArtworkByGameId.size() > 0}">
+    <div th:each="artwork : ${allArtworkByGameId}" >
+      <a class="item">
+        <img th:src="${artwork.getArtwork()}">
+        <div class="item__details item--medium" >
+<!--          <th:block th:text="${game.getTitle()}"></th:block>-->
+<!--          <br>-->
+<!--          <br>-->
+<!--          <th:block th:text="${game.getDescription()}"></th:block>-->
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
 <th:block th:insert="~{/fragments/footer}"/>
 </body>
 </html>
