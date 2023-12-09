@@ -37,7 +37,7 @@ public class UserController {
         return "register";
     }
 
-    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/register")
     public String register(@Valid RegisterUserDTO registerUserDTO,
                                                     BindingResult bindingResult,
                                                     RedirectAttributes redirectAttributes) {
