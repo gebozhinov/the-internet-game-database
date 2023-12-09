@@ -63,6 +63,8 @@ public class GameController {
         List<ReviewDTO> reviews = this.reviewService.findAllByGameId(id);
         model.addAttribute("reviews", reviews);
 
+        this.gameService.incrementViews(id);
+
         return "game-details";
     }
 

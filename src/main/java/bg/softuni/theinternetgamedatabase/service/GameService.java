@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class GameService {
@@ -30,6 +31,7 @@ public class GameService {
     private final PlatformRepository platformRepository;
     private final ImageCloudService imageCloudService;
     private final GameMapper gameMapper;
+    private final Map<Long, Long> views = new HashMap<>();
 
     public GameService(GameRepository gameRepository,
                        UserRepository userRepository,
@@ -150,6 +152,36 @@ public class GameService {
 
     public List<ArtworkView> findAllArtworkByGameId(Long id) {
       return this.gameRepository.findAllArtworkByGameId(id).orElse(new ArrayList<>());
+    }
+
+    public void incrementViews(Long id) {
+
+        if (this.views.containsKey(id)) {
+            Long currentViews = this.views.get(id);
+            this.views.put(id, currentViews + 1);
+        } else {
+            this.views.put(id, 1L);
+        }
+    }
+    public void clearViews() {
+        this.views.clear();
+    }
+
+    public void refreshOnFocus() {
+
+        if (this.views.isEmpty()) {
+            return;
+        }
+
+        List<Map.Entry<Long, Long>> mostViewedGame = this.views.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(1L).toList();
+        Long mostViewedGameId = mostViewedGame.get(0).getKey();
+
+
+        Game game = this.gameRepository.findById(mostViewedGameId).get();
+        game.setOnFocus(true);
+        this.gameRepository.save(game);
     }
     private Manufacture setManufacture(Long id) {
         return this.manufactureRepository.findById(id).get();
