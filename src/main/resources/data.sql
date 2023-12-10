@@ -5,11 +5,20 @@ VALUES ('USER'),
 ON CONFLICT (user_role) DO NOTHING;
 
 INSERT INTO users(age, email, password, username)
-SELECT 33, 'admin@admin.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'admin'
+SELECT 20, 'admin@admin.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'admin'
 WHERE NOT EXISTS (SELECT id FROM users WHERE id = 1)
 UNION ALL
-SELECT 33, 'user@user.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'user'
-WHERE NOT EXISTS (SELECT id FROM users WHERE id = 2);
+SELECT 25, 'user@user.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'user'
+WHERE NOT EXISTS (SELECT id FROM users WHERE id = 2)
+UNION ALL
+SELECT 30, 'test1@user.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'test1'
+WHERE NOT EXISTS (SELECT id FROM users WHERE id = 3)
+UNION ALL
+SELECT 35, 'test2@user.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'test2'
+WHERE NOT EXISTS (SELECT id FROM users WHERE id = 4)
+UNION ALL
+SELECT 40, 'test3@user.com', '$2a$10$6b.VoCrHD6ShKxGx8HDq8.ioLQ4h.op09vgCPfgHcqqLIeA2UY97e', 'test3'
+WHERE NOT EXISTS (SELECT id FROM users WHERE id = 5);
 
 INSERT INTO users_roles(user_id, role_id)
 SELECT 1, 1
@@ -22,7 +31,16 @@ SELECT 1, 3
 WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 1)
 UNION ALL
 SELECT 2, 1
-WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 2);
+WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 2)
+UNION ALL
+SELECT 3, 1
+WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 3)
+UNION ALL
+SELECT 4, 1
+WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 4)
+UNION ALL
+SELECT 5, 1
+WHERE NOT EXISTS (SELECT user_id FROM users_roles WHERE user_id = 5);
 
 
 INSERT INTO manufactures(company_name)
